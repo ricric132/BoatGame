@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50397dc7775e08d41895ec5bc9817068, type: 3}
+  m_Name: 1x1x1
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1434637445201457590, guid: e5b57aaf1415070469fd225b5990a12c, type: 3}
+  preview: {fileID: 1794706964080875064, guid: d2497415413ef40429792ed3bdce230a, type: 3}
+  x: 1
+  y: 1
+  z: 1
+  buildingResources:
+    keys:
+    - {fileID: 11400000, guid: 1ff707e5a15bcd44fa5c6bfb3e2c9cc0, type: 2}
+    values: 01000000
+  topWalkable: 1
+  entryWays:
+  - position: {x: 0, y: 0, z: 0}
+    directions:
+    - {x: 0, y: 0, z: 0}
+  walkableLevels: 

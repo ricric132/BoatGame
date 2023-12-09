@@ -1,0 +1,4 @@
+repository "BoatGame@ricric@cloud"
+  path "/"
+    br "/main"
+    co "/main"

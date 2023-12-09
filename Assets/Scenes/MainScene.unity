@@ -3088,7 +3088,7 @@ MonoBehaviour:
   nonRotatePivotPoint: {fileID: 597144024}
   buildingScript: {fileID: 1614139499}
   lateralMovementSpeed: 10
-  verticalMovementSpeed: 10
+  verticalMovementSpeed: 50
   lateralTrolly: {fileID: 296223513}
 --- !u!1 &978858635
 GameObject:

@@ -63,7 +63,7 @@ public class BuildingScript : MonoBehaviour
     List<GameObject> stairBuildPreviewSections = new List<GameObject>();
     XZ stairLockDirection = XZ.None;
 
-    List<Vector3> buildCoords = new List<Vector3>();
+    List<List<Vector3>> buildCoords = new List<List<Vector3>>(); //buildCoord[i][0] = functional grid placement ...  buildCoord[i][1] = visual placement point
 
     enum XZ
     {
@@ -269,6 +269,8 @@ public class BuildingScript : MonoBehaviour
 
             if (stairBuildingStarted)
             {
+                //scrapped stairway drag indicator
+                
                 previewObject.SetActive(false);
                 int xDiff = checkCoordsVisual.x - stairStartCoord.x;
                 int zDiff = checkCoordsVisual.z - stairStartCoord.z;
@@ -305,7 +307,7 @@ public class BuildingScript : MonoBehaviour
                 if (selectedObjectSO == StairObject)
                 {
                     stairBuildingStarted = true;
-                    stairStartCoord = checkCoordsVisual;
+                    stairStartCoord = checkCoordsFuntional;
                     stairLockDirection = XZ.None;
                 }
                 else
@@ -380,7 +382,8 @@ public class BuildingScript : MonoBehaviour
                 for(int i = 0; i < endCoord.x - startCoord.x; i++)
                 {
                     stairBuildPreviewSections.Add(Instantiate(selectedObjectSO.preview, GetWorldPosition(new Vector3(startCoord.x+i, startCoord.y+i, startCoord.z)+rotationOffset), Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0)));
-                    buildCoords.Add(new Vector3(startCoord.x + i + rotationOffset.x, startCoord.y + i + rotationOffset.y, startCoord.z + rotationOffset.z));
+                    Vector3 pos = new Vector3(startCoord.x + i, startCoord.y + i, startCoord.z);
+                    buildCoords.Add(new List<Vector3>(){ pos, pos+rotationOffset});
                 }
             }
             else
@@ -388,8 +391,9 @@ public class BuildingScript : MonoBehaviour
                 SetRotation(Rotation.back);
                 for (int i = 0; i > endCoord.x - startCoord.x; i--)
                 {
-                    stairBuildPreviewSections.Add(Instantiate(selectedObjectSO.preview, GetWorldPosition(new Vector3(startCoord.x + i, startCoord.y - i, startCoord.z)+rotationOffset), Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0)));
-                    buildCoords.Add(new Vector3(startCoord.x + i + rotationOffset.x, startCoord.y - i + rotationOffset.y, startCoord.z + rotationOffset.z ));
+                    stairBuildPreviewSections.Add(Instantiate(selectedObjectSO.preview, GetWorldPosition(new Vector3(startCoord.x + i, startCoord.y - i, startCoord.z) + rotationOffset), Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0)));
+                    Vector3 pos = new Vector3(startCoord.x + i, startCoord.y - i, startCoord.z);
+                    buildCoords.Add(new List<Vector3>() { pos, pos + rotationOffset });
                 }
             }
         }
@@ -402,7 +406,8 @@ public class BuildingScript : MonoBehaviour
                 for (int i = 0; i < endCoord.z - startCoord.z; i++)
                 {
                     stairBuildPreviewSections.Add(Instantiate(selectedObjectSO.preview, GetWorldPosition(new Vector3(startCoord.x, startCoord.y + i, startCoord.z + i)+rotationOffset), Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0)));
-                    buildCoords.Add(new Vector3(startCoord.x + rotationOffset.x, startCoord.y + i + rotationOffset.y, startCoord.z + i + rotationOffset.z));
+                    Vector3 pos = new Vector3(startCoord.x, startCoord.y + i, startCoord.z + i);
+                    buildCoords.Add(new List<Vector3>() { pos, pos + rotationOffset });
                 }
             }
             else
@@ -411,16 +416,18 @@ public class BuildingScript : MonoBehaviour
                 for (int i = 0; i > endCoord.z - startCoord.z; i--)
                 {
                     stairBuildPreviewSections.Add(Instantiate(selectedObjectSO.preview, GetWorldPosition(new Vector3(startCoord.x, startCoord.y - i, startCoord.z + i) + rotationOffset), Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0)));
-                    buildCoords.Add(new Vector3(startCoord.x + rotationOffset.x, startCoord.y - i + rotationOffset.y, startCoord.z + i+ rotationOffset.z));
+                    Vector3 pos = new Vector3(startCoord.x, startCoord.y - i, startCoord.z + i);
+                    buildCoords.Add(new List<Vector3>() { pos, pos + rotationOffset});
                 }
             }
         }
     }
     void BuildGroup()
     {
-        foreach (Vector3 preview in buildCoords)
+        foreach (List<Vector3> preview in buildCoords)
         {
-            AttemptBuild(new Vector3Int((int)preview.x, (int)preview.y, (int)preview.z), preview, true);
+            bool canBuild = CheckCanBuild(new Vector3Int((int)preview[0].x, (int)preview[0].y, (int)preview[0].z), selectedObjectSO.x, selectedObjectSO.y, selectedObjectSO.z);
+            AttemptBuild(new Vector3Int((int)preview[0].x, (int)preview[0].y, (int)preview[0].z), preview[1], canBuild);
         }
     }
 

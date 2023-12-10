@@ -424,7 +424,7 @@ Transform:
   m_GameObject: {fileID: 296223512}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3083,12 +3083,12 @@ MonoBehaviour:
   horizontalSpeed: 10
   verticalSpeed: 200
   zoomSpeed: 100
-  turnSpeed: 1000
+  turnSpeed: 500
   pivotPoint: {fileID: 1961240071}
   nonRotatePivotPoint: {fileID: 597144024}
   buildingScript: {fileID: 1614139499}
   lateralMovementSpeed: 10
-  verticalMovementSpeed: 50
+  verticalMovementSpeed: 30
   lateralTrolly: {fileID: 296223513}
 --- !u!1 &978858635
 GameObject:

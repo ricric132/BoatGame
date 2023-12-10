@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -700,15 +700,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathfinding: {fileID: 786215021}
   buildingScript: {fileID: 1614139499}
-  currentTask:
+  mainTask:
     building: {fileID: 0}
     buildingInfo: {fileID: 0}
-    priority: 0
+    priority: -1
     taskType: 0
   personName: 
   personInfo: 
   personImage: {fileID: 0}
   personManager: {fileID: 1226073830}
+  maxHeldItems: 10
+  storeHeldItemPriority: 0
 --- !u!136 &335539185
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2962,13 +2964,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 5, z: 5}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1961240071}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 2035908716}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2985,10 +2987,13 @@ MonoBehaviour:
   horizontalSpeed: 10
   verticalSpeed: 200
   zoomSpeed: 100
-  turnSpeed: 100
+  turnSpeed: 500
   pivotPoint: {fileID: 1961240071}
   nonRotatePivotPoint: {fileID: 597144024}
   buildingScript: {fileID: 1614139499}
+  lateralMovementSpeed: 10
+  verticalMovementSpeed: 30
+  lateralTrolly: {fileID: 2035908716}
 --- !u!1 &978858635
 GameObject:
   m_ObjectHideFlags: 0
@@ -4567,25 +4572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6f42b20db65b643a61008303190def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boatCentre: {fileID: 1420994358}
-  cam: {fileID: 963194227}
-  buildingObjectSOs:
-  - {fileID: 11400000, guid: 22e51451d1cc1d445810968fc4e66291, type: 2}
-  - {fileID: 11400000, guid: eeb383f234eebda4180738dd5b369f86, type: 2}
-  - {fileID: 11400000, guid: b1c5e8132ed708e40bf44cfc2908e57b, type: 2}
-  - {fileID: 11400000, guid: fea7cdea405d8cb47925179c4e6f3db6, type: 2}
-  - {fileID: 11400000, guid: 1477b1dbd24258d4aaa18a8555aa9ded, type: 2}
-  - {fileID: 11400000, guid: 3aa8ab935603ea248a4c1599f964ea3e, type: 2}
-  previewRed: {fileID: 2100000, guid: 34a5a7384fa6c3940a34b0818ef4a134, type: 2}
-  previewBlue: {fileID: 2100000, guid: e20c03ede177a464c8c0f093b82f5950, type: 2}
-  previewObject: {fileID: 1781166582}
-  gridNavPreviewObject: {fileID: 2554312445343768957, guid: 307c1c949f689304b955143596eefca8, type: 3}
-  playerResources: {fileID: 1226073828}
-  pathfinding: {fileID: 786215021}
-  pillarSO: {fileID: 11400000, guid: fc14b3c3bde08d8438d6a121e6ad3f28, type: 2}
-  gridIndicator: {fileID: 844108767}
-  canvasManager: {fileID: 836963955}
-  peopleManager: {fileID: 1226073830}
 --- !u!1 &1719739832
 GameObject:
   m_ObjectHideFlags: 0
@@ -4914,11 +4900,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2497415413ef40429792ed3bdce230a, type: 3}
---- !u!1 &1781166582 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1794706964080875064, guid: d2497415413ef40429792ed3bdce230a, type: 3}
-  m_PrefabInstance: {fileID: 1781166581}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1795739720
 GameObject:
   m_ObjectHideFlags: 0
@@ -5527,8 +5508,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 844108768}
-  - {fileID: 963194228}
   - {fileID: 260719980}
+  - {fileID: 2035908716}
   m_Father: {fileID: 597144024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1999635066
@@ -5795,6 +5776,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2035908715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2035908716}
+  m_Layer: 0
+  m_Name: LateralTrolly
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2035908716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035908715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.32, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 963194228}
+  m_Father: {fileID: 1961240071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2038090302
 GameObject:

@@ -1,14 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[Serializable]
 public class PathfindingNode
 {
     public float distance;
     public float rootDistance;
     public float manhattenDistance;
-    public bool[,,] enterableSides;
-    public bool[,,] walls;
+    public Serializable3DArray<bool> enterableSides;
+    public Serializable3DArray<bool> walls;
     public bool visited;
     public PathfindingNode previousNode;
     public Vector3Int coords;
@@ -17,8 +20,8 @@ public class PathfindingNode
     public PathfindingNode(int x, int y, int z)
     {
         hasFloor = false;
-        enterableSides = new bool[3, 3, 3];
-        walls = new bool[3, 3, 3];
+        enterableSides = new Serializable3DArray<bool>(3, 3, 3);
+        walls = new Serializable3DArray<bool>(3, 3, 3);
         this.coords = new Vector3Int(x, y, z);
     }
 

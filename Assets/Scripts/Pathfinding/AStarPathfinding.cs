@@ -91,10 +91,10 @@ public class AStarPathfinding : MonoBehaviour
                         if(gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.visited){
                             continue;
                         }
-                        if(gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides[-x+1, -y+1, -z+1] == false){
+                        if(gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides.GetValue(-x+1, -y+1, -z+1) == false){
                             continue;
                         }
-                        if(gridManager.grid.GetValue(currentNode.x, currentNode.y, currentNode.z).pathfindingNode.enterableSides[x+1, y+1, z+1] == false){
+                        if(gridManager.grid.GetValue(currentNode.x, currentNode.y, currentNode.z).pathfindingNode.enterableSides.GetValue(x+1, y+1, z+1) == false){
                             continue;
                         }
                         
@@ -165,11 +165,11 @@ public class AStarPathfinding : MonoBehaviour
                         {
                             continue;
                         }
-                        if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides[-x + 1, -y + 1, -z + 1] == false)
+                        if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides.GetValue(-x + 1, -y + 1, -z + 1) == false)
                         {
                             continue;
                         }
-                        if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides[x + 1, y + 1, z + 1] == false)
+                        if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides.GetValue(x + 1, y + 1, z + 1) == false)
                         {
                             continue;
                         }
@@ -230,11 +230,11 @@ public class AStarPathfinding : MonoBehaviour
                         {
                             continue;
                         }
-                        if (gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z + z).pathfindingNode.enterableSides[-x + 1, -y + 1, -z + 1] == false)
+                        if (gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z + z).pathfindingNode.enterableSides.GetValue(-x + 1, -y + 1, -z + 1) == false)
                         {
                             continue;
                         }
-                        if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.enterableSides[x + 1, y + 1, z + 1] == false)
+                        if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.enterableSides.GetValue(x + 1, y + 1, z + 1) == false)
                         {
                             continue;
                         }

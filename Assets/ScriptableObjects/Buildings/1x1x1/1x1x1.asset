@@ -39,4 +39,4 @@ MonoBehaviour:
   buildingDescription: 
   icon: {fileID: 0}
   ID: 0
-  scriptInstancePrefab: {fileID: 0}
+  scriptInstancePrefab: {fileID: 1434637445201457590, guid: 5aeaec424b598534cbb8c62d4673f1b8, type: 3}

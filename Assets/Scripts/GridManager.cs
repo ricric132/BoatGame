@@ -6,6 +6,7 @@ public class GridManager : MonoBehaviour
 {
     public Serializable3DArray<GridObject> grid;
     public List<GameObject> buildingScripts;
+    public BuildingScript buildingScript;
 
     public void Reset(int setx, int sety, int setz)
     {
@@ -28,8 +29,36 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    public void SerializeToJson()
+    public void SaveToJson()
     {
+        string mapData = JsonUtility.ToJson(grid);
+        string filePath = Application.persistentDataPath + "/MapData.json";
+        Debug.Log(filePath);
+        System.IO.File.WriteAllText(filePath, mapData);
+    }
 
+    public void LoadFromJson()
+    {
+        string filePath = Application.persistentDataPath + "/MapData.json";
+        string mapData = System.IO.File.ReadAllText(filePath);
+        Debug.Log(mapData);
+        grid = JsonUtility.FromJson<Serializable3DArray<GridObject>>(mapData);
+        Debug.Log("loaded");
+
+        for (int x = 0; x < grid.x; x++)
+        {
+            for(int z = 0;z < grid.z; z++)
+            {
+                for(int y = 0; y < grid.y;y++)
+                {
+                    if (grid.GetValue(x, y, z).section != null)
+                    {
+                        //still need to account for rotatiion
+                        Instantiate(grid.GetValue(x, y, z).section.prefab, buildingScript.GetWorldPosition(x, y, z), Quaternion.identity);
+
+                    }
+                }
+            }
+        }
     }
 }

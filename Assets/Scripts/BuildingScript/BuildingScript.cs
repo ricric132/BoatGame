@@ -665,12 +665,12 @@ public class BuildingScript : MonoBehaviour
             for(int y = 0; y < 3; y++){
                 for(int z = 0; z < 3; z++) {
                     if(rotatedWalkableDirs.Contains(new Vector3Int(x - 1, y - 1, z - 1))){
-                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.enterableSides[x, y, z] = true;
-                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.walls[x, y, z] = false;
+                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.enterableSides.UpdateValue(x, y, z, true);
+                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.walls.UpdateValue(x, y, z, false);
                     }
                     else{
-                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.enterableSides[x, y, z] = false;
-                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.walls[x, y, z] = true;
+                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.enterableSides.UpdateValue(x, y, z, false);
+                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.walls.UpdateValue(x, y, z, true);
                     }
                 }
             }
@@ -689,8 +689,8 @@ public class BuildingScript : MonoBehaviour
             {
                 for (int z = 0; z < 3; z++)
                 {
-                    gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.enterableSides[x, y, z] = false;
-                    gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.walls[x, y, z] = true;
+                    gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.enterableSides.UpdateValue(x, y, z, false);
+                    gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.walls.UpdateValue(x, y, z, true);
                 }
             }
         }
@@ -726,8 +726,8 @@ public class BuildingScript : MonoBehaviour
         for(int x = 0; x < 3; x++){
             for(int y = 0; y < 3; y++){
                 for(int z = 0; z < 3; z++) {
-                    gridManager.grid.GetValue(floorSpot.x, floorSpot.y, floorSpot.z).pathfindingNode.enterableSides[x , 1, z] = true;
-                    gridManager.grid.GetValue(floorSpot.x, floorSpot.y, floorSpot.z).pathfindingNode.enterableSides[x , 0, z] = true;
+                    gridManager.grid.GetValue(floorSpot.x, floorSpot.y, floorSpot.z).pathfindingNode.enterableSides.UpdateValue(x, 1, z, true);
+                    gridManager.grid.GetValue(floorSpot.x, floorSpot.y, floorSpot.z).pathfindingNode.enterableSides.UpdateValue(x, 0, z, true);
                 }
             }
         }

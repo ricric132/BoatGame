@@ -17,3 +17,45 @@ MonoBehaviour:
   x: 3
   y: 3
   z: 3
+  sections:
+    arr3D:
+    - arr2D:
+      - arr1D:
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+      - arr1D:
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+      - arr1D:
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+    - arr2D:
+      - arr1D:
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+      - arr1D:
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+      - arr1D:
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+        - data: {fileID: 0}
+    - arr2D:
+      - arr1D: []
+      - arr1D: []
+      - arr1D: []
+  buildingResources:
+    keys: []
+    values: 
+  topWalkable: 0
+  entryWays: []
+  walkableLevels: 
+  buildingName: 
+  buildingDescription: 
+  icon: {fileID: 0}
+  ID: 1

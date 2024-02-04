@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
 public class CameraController : MonoBehaviour
 {
     [SerializeField] Vector3 defaultEulerRotation; 
@@ -34,6 +35,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //Single pivot at centre camera controller
         /* 
         float x = Input.GetAxis("Horizontal");
@@ -54,7 +56,7 @@ public class CameraController : MonoBehaviour
             pivotHeight = newHeight.Key;
         }
 
-        
+
         pivotPoint.localPosition = new Vector3(pivotPoint.localPosition.x, Mathf.Lerp(pivotPoint.localPosition.y, pivotHeight, 5f * Time.deltaTime), pivotPoint.localPosition.z);
         //transform.position += (forwardMove * z + transform.right * x).normalized * horizontalSpeed * Time.deltaTime;
         //transform.position += new Vector3(0, 1, 0) * Input.mouseScrollDelta.y * verticalSpeed * Time.deltaTime;
@@ -66,7 +68,7 @@ public class CameraController : MonoBehaviour
         zoom = Mathf.Lerp(zoom, targetZoom, 5f * Time.deltaTime);
         Vector3 dirFromPivot = (transform.position - pivotPoint.position).normalized;
         transform.position = pivotPoint.position + (dirFromPivot * zoom);
-        
+
 
         if(Input.GetKey(KeyCode.Mouse1)){
             float turnAmountX = Input.GetAxis("Mouse X");
@@ -75,7 +77,6 @@ public class CameraController : MonoBehaviour
             //pivotPoint.rotation = Quaternion.Euler(pivotPoint.rotation.eulerAngles + new Vector3(turnAmountY * turnSpeed * Time.deltaTime, 0, 0));
         }
         */
-
 
         //lateral camera movement\
 
@@ -90,6 +91,8 @@ public class CameraController : MonoBehaviour
         {
             float turnAmountX = Input.GetAxis("Mouse X");
             lateralTrolly.rotation = Quaternion.Euler(lateralTrolly.rotation.eulerAngles + new Vector3(0, turnAmountX * turnSpeed * Time.deltaTime, 0));
+
         }
+        
     }
 }

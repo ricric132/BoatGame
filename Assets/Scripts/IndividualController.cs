@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class IndividualController : MonoBehaviour
 {
     [SerializeField] AStarPathfinding pathfinding;
-    List<AStarPathfinding.Node> path;
+    List<PathfindingNode> path;
     [SerializeField] BuildingScript buildingScript;
     Vector3 nextWaypoint;
     int waypointNum;

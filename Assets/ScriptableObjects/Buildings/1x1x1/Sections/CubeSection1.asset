@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4240c8100a845f48b8266380ef0d576, type: 3}
+  m_Name: CubeSection1
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1434637445201457590, guid: 252c49e4febda6a49a2f9b732328d3bc, type: 3}
+  wholeBuild: {fileID: 0}
+  walkableDirs: []
+  x: 0
+  y: 0
+  z: 0

@@ -13,7 +13,7 @@ public class CombatController : MonoBehaviour
     CombatUnit currentTurnTaker = null;
     [SerializeField] AStarPathfinding pathfinder;
     [SerializeField] BuildingScript buildings;
-    List<AStarPathfinding.Node> movableNodes;
+    List<PathfindingNode> movableNodes;
 
     [SerializeField] GameObject moveIndicatorPrefab;
     List<GameObject> moveIndicators = new List<GameObject>();
@@ -53,7 +53,7 @@ public class CombatController : MonoBehaviour
     {
         SetUnitPositions();
         movableNodes = GetMovableTiles();
-        foreach(AStarPathfinding.Node node in movableNodes)
+        foreach(PathfindingNode node in movableNodes)
         {
             Debug.Log("placingTile :" + node.coords);
             GameObject indicator = Instantiate(moveIndicatorPrefab, buildings.GetWorldPosition(node.coords), Quaternion.identity);
@@ -63,7 +63,7 @@ public class CombatController : MonoBehaviour
         NextTurn();
     }
 
-    List<AStarPathfinding.Node> GetMovableTiles()
+    List<PathfindingNode> GetMovableTiles()
     {
         Debug.Log("coords : " + currentTurnTaker.coords);
         return pathfinder.NodeWithinRange(currentTurnTaker.coords, currentTurnTaker.moveRange); 

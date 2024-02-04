@@ -793,7 +793,7 @@ Transform:
   m_GameObject: {fileID: 335539183}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.48, z: 0}
+  m_LocalPosition: {x: -5.78, y: 1.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2041,6 +2041,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719326583}
   m_CullTransparentMesh: 1
+--- !u!1 &763126879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 763126880}
+  m_Layer: 0
+  m_Name: StairHelperPreview
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &763126880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763126879}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &786215020
 GameObject:
   m_ObjectHideFlags: 0
@@ -2642,7 +2673,7 @@ Transform:
   m_GameObject: {fileID: 844108767}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4569,9 +4600,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 1614139496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd6f42b20db65b643a61008303190def, type: 3}
+  m_Script: {fileID: 11500000, guid: ccab88bf19559154187237e5cdf39d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boatCentre: {fileID: 1420994358}
+  cam: {fileID: 963194227}
+  buildingObjectSOs:
+  - {fileID: 11400000, guid: 22e51451d1cc1d445810968fc4e66291, type: 2}
+  - {fileID: 11400000, guid: eeb383f234eebda4180738dd5b369f86, type: 2}
+  - {fileID: 11400000, guid: b1c5e8132ed708e40bf44cfc2908e57b, type: 2}
+  - {fileID: 11400000, guid: fea7cdea405d8cb47925179c4e6f3db6, type: 2}
+  - {fileID: 11400000, guid: 1477b1dbd24258d4aaa18a8555aa9ded, type: 2}
+  - {fileID: 11400000, guid: 3aa8ab935603ea248a4c1599f964ea3e, type: 2}
+  previewRed: {fileID: 2100000, guid: 34a5a7384fa6c3940a34b0818ef4a134, type: 2}
+  previewBlue: {fileID: 2100000, guid: e20c03ede177a464c8c0f093b82f5950, type: 2}
+  previewObject: {fileID: 1781166582}
+  gridNavPreviewObject: {fileID: 2554312445343768957, guid: 307c1c949f689304b955143596eefca8, type: 3}
+  playerResources: {fileID: 1226073828}
+  pathfinding: {fileID: 786215021}
+  pillarSO: {fileID: 11400000, guid: fc14b3c3bde08d8438d6a121e6ad3f28, type: 2}
+  gridIndicator: {fileID: 844108767}
+  canvasManager: {fileID: 836963955}
+  peopleManager: {fileID: 1226073830}
+  stairsBuildPreview: {fileID: 763126879}
+  StairObject: {fileID: 11400000, guid: 1477b1dbd24258d4aaa18a8555aa9ded, type: 2}
+  test: 0
 --- !u!1 &1719739832
 GameObject:
   m_ObjectHideFlags: 0
@@ -4900,6 +4953,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2497415413ef40429792ed3bdce230a, type: 3}
+--- !u!1 &1781166582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1794706964080875064, guid: d2497415413ef40429792ed3bdce230a, type: 3}
+  m_PrefabInstance: {fileID: 1781166581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1795739720
 GameObject:
   m_ObjectHideFlags: 0
@@ -6039,3 +6097,4 @@ SceneRoots:
   - {fileID: 335539188}
   - {fileID: 1376464111}
   - {fileID: 978858639}
+  - {fileID: 763126880}

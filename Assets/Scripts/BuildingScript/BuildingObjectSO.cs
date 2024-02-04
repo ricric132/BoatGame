@@ -13,6 +13,7 @@ public class BuildingObjectSO : ScriptableObject
     public int x;
     public int y;
     public int z;
+    public Serializable3DArray<BuildingSectionSO> sections;
     public SerializableDictionary<ResourceSO, int> buildingResources;
     public bool topWalkable;
     public EntryWay[] entryWays;
@@ -20,6 +21,8 @@ public class BuildingObjectSO : ScriptableObject
     public string buildingName;
     public string buildingDescription;
     public Image icon;
+    public int ID;
+    public GameObject scriptInstancePrefab;
 }
 
 [Serializable]

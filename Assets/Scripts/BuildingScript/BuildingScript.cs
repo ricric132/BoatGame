@@ -16,7 +16,8 @@ public class BuildingScript : MonoBehaviour
     float tileSize = 1;
     Vector3 origin = new Vector3(0, 0, 0);
     [SerializeField] Transform boatCentre;
-    GridObject[,,] grid;
+    public GridManager gridManager;
+
     [SerializeField] Camera cam;
 
     [SerializeField] BuildingObjectSO[] buildingObjectSOs;
@@ -34,8 +35,8 @@ public class BuildingScript : MonoBehaviour
     float previewObjectLerpTimer;
     float gridRotation;
     [SerializeField] PlayerResources playerResources;
-    [SerializeField] AStarPathfinding pathfinding;
-    enum Rotation{
+
+    public enum Rotation{
         forward = 0,
         left = 3,
         right = 1,
@@ -63,6 +64,8 @@ public class BuildingScript : MonoBehaviour
     List<GameObject> stairBuildPreviewSections = new List<GameObject>();
     XZ stairLockDirection = XZ.None;
 
+    public int test; 
+
     List<List<Vector3>> buildCoords = new List<List<Vector3>>(); //buildCoord[i][0] = functional grid placement ...  buildCoord[i][1] = visual placement point
 
     enum XZ
@@ -78,23 +81,19 @@ public class BuildingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        checkGrid = new GameObject[gridSize, gridSize, gridSize];
-        grid = new GridObject[gridSize, gridSize, gridSize];
-        pathfinding.Nodes = new AStarPathfinding.Node[gridSize, gridSize, gridSize];
+        //checkGrid = new GameObject[gridSize, gridSize, gridSize];
+        gridManager.Reset(gridSize, gridSize, gridSize);
         origin = boatCentre.position - Quaternion.AngleAxis(gridRotation, Vector3.up) * (new Vector3(gridSize, 0, gridSize) * tileSize/2);
         
-        for(int x = 0; x < grid.GetLength(0); x++){
-            for(int z = 0; z < grid.GetLength(1); z++){
-                for(int y = 0; y < grid.GetLength(2); y++){
-                    //UtilsClass.CreateWorldText(x + ", " + y + ", " + z, null, GetWorldPosition(x, y, z) + new Vector3(tileSize, tileSize) * 0.5f, 5, Color.white, TextAnchor.MiddleCenter);
-                    grid[x, y, z] = new GridObject(x, y, z);  
-                    pathfinding.Nodes[x, y, z] = new AStarPathfinding.Node(x, y, z);
-                    
+        /*
+        for(int x = 0; x < gridManager.grid.x; x++){
+            for(int z = 0; z < gridManager.grid.z; z++){
+                for(int y = 0; y < gridManager.grid.y; y++){
                     //checkGrid[x, y, z] = Instantiate(gridNavPreviewObject, GetWorldPosition(new Vector3(x, y, z)), Quaternion.identity); 
                 }
             }
         }
-        
+        */
 
     }
 
@@ -126,7 +125,7 @@ public class BuildingScript : MonoBehaviour
     }
 
     public Vector3Int GetRelativeXYZ(Vector3 Pos){
-        Vector3 recentered = Pos ;
+        Vector3 recentered = Pos;
         recentered = Quaternion.AngleAxis(-gridRotation, Vector3.up) * recentered;
         return new Vector3Int(Mathf.RoundToInt(recentered.x/tileSize), Mathf.Min(Mathf.RoundToInt(recentered.y/tileSize), 0), Mathf.RoundToInt(recentered.z/tileSize));
     }
@@ -142,10 +141,12 @@ public class BuildingScript : MonoBehaviour
         gridIndicator.SetActive(!gridIndicator.activeSelf);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        if(canvasManager.currentState != CanvasManager.CanvasState.BuildingMode){
+        //if (Application.IsPlaying(gameObject)) { return; }
+
+        if (canvasManager.currentState != CanvasManager.CanvasState.BuildingMode){
             return;
         }
 
@@ -213,7 +214,9 @@ public class BuildingScript : MonoBehaviour
         int layerMask = 1 << 8;
 
         if(Physics.Raycast(ray, out hit, 100f, layerMask)){
+           
             Vector3Int normalCheck = GetRelativeXYZ(hit.normal * tileSize);
+            
             //if(normalCheck.x > normalCheck.y && normalCheck.x > normalCheck.z){
                 //normalCheck
             //}
@@ -234,7 +237,9 @@ public class BuildingScript : MonoBehaviour
             else if(normalCheck.z > 0){
                 resizedRotationalOffset.z *= (normalCheck.z * selectedObjectSO.z);
             }
-            
+
+            //Debug.Log("normal:" + normalOffset+ "      Rotation:" + resizedRotationalOffset);
+
 
             Vector3Int checkCoordsVisual = GetXYZ(hit.point + hit.normal*0.9f*tileSize) + normalOffset + resizedRotationalOffset;
             Vector3Int checkCoordsFuntional = checkCoordsVisual - rotationOffset;
@@ -254,7 +259,6 @@ public class BuildingScript : MonoBehaviour
             previewObjectOffset = Vector3.Lerp(previewObjectStartCoords, previewObjectTargetCoords, previewObjectLerpTimer/0.2f);
             previewObject.transform.rotation = Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0);
             previewObject.transform.localPosition = -(new Vector3(gridSize, 0, gridSize) * tileSize/2) + previewObjectOffset;
-            //Debug.Log(previewObjectTargetCoords);
 
             bool canBuild = CheckCanBuild(checkCoordsFuntional, selectedObjectSO.x, selectedObjectSO.y, selectedObjectSO.z);
 
@@ -335,13 +339,13 @@ public class BuildingScript : MonoBehaviour
         if(CheckEnoughResources() == false){
             return false;
         }
-        if(Mathf.Max(start.x, start.x + x - 1) > grid.GetLength(0) -1 || Mathf.Max(start.z, start.z + z - 1) > grid.GetLength(1) - 1|| Mathf.Max(start.y, start.y + y - 1) > grid.GetLength(2) - 1|| Mathf.Min(start.x, start.x + x + 1) < 0 || Mathf.Min(start.z, start.z + z + 1) < 0 || Mathf.Min(start.y, start.y + y + 1) < 0){
+        if(Mathf.Max(start.x, start.x + x - 1) > gridManager.grid.x -1 || Mathf.Max(start.z, start.z + z - 1) > gridManager.grid.z - 1|| Mathf.Max(start.y, start.y + y - 1) > gridManager.grid.y - 1|| Mathf.Min(start.x, start.x + x + 1) < 0 || Mathf.Min(start.z, start.z + z + 1) < 0 || Mathf.Min(start.y, start.y + y + 1) < 0){
             return false;
         }
         for(int Xcheck = 0; Xcheck < x; Xcheck++){
             for(int Ycheck = 0; Ycheck < y; Ycheck++){
                 for(int Zcheck = 0; Zcheck < z; Zcheck++) {
-                    if(grid[start.x + Xcheck * tickers.x, start.y + Ycheck * tickers.y, start.z + Zcheck * tickers.z].occupied == true){
+                    if(gridManager.grid.GetValue(start.x + Xcheck * tickers.x, start.y + Ycheck * tickers.y, start.z + Zcheck * tickers.z).occupied == true){
                         return false;
                     }
                 }
@@ -453,7 +457,7 @@ public class BuildingScript : MonoBehaviour
         list.Clear();
     }
 
-    void AttemptBuild(Vector3Int checkCoord, Vector3 placeCoord, bool canBuild){
+    public void AttemptBuild(Vector3Int checkCoord, Vector3 placeCoord, bool canBuild){
         if(!canBuild){
             return;
         }
@@ -461,22 +465,26 @@ public class BuildingScript : MonoBehaviour
             playerResources.ChangeResourceAmount(resource.Key, -resource.Value);
         }
 
-        //set entryways
-        Dictionary<Vector3Int, Vector3Int[]> doors = new Dictionary<Vector3Int, Vector3Int[]>();
-        foreach(EntryWay entryWay in selectedObjectSO.entryWays){
-            doors.Add(entryWay.position, entryWay.directions);
-        }
+        GameObject buildScripts = Instantiate(selectedObjectSO.scriptInstancePrefab);
+        gridManager.buildingScripts.Add(buildScripts);
 
-        for(int x = 0; x < selectedObjectSO.x; x++){
+        for (int x = 0; x < selectedObjectSO.x; x++){
             for(int y = 0; y < selectedObjectSO.y; y++){
                 for(int z = 0; z < selectedObjectSO.z; z++) {
+
                     Vector3Int currentCheckCoords = new Vector3Int(checkCoord.x + x * tickers.x, checkCoord.y + y * tickers.y, checkCoord.z + z * tickers.z);
-                    grid[currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z].occupied = true;
-                    grid[currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z].building = selectedObjectSO;
+                    gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).occupied = true;
+                    gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).section = selectedObjectSO.sections.GetValue(x, y, z);
+                    gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).section.masterScripts = buildScripts;
 
-                    AddOccupiedtoPathfindingNode(currentCheckCoords, doors[new Vector3Int(x, y, z)]);
+                    GameObject built = Instantiate(selectedObjectSO.sections.GetValue(x, y, z).prefab, GetWorldPosition(placeCoord), Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0));
+                    built.transform.parent = boatCentre;
 
-                    if(y == 0){
+
+                    AddOccupiedtoPathfindingNode(currentCheckCoords, selectedObjectSO.sections.GetValue(x, y, z).walkableDirs);
+
+
+                    if (y == 0){
                         BuildPillar(currentCheckCoords.x, currentCheckCoords.y - 1, currentCheckCoords.z);
                     }
 
@@ -495,40 +503,130 @@ public class BuildingScript : MonoBehaviour
             }
         }
 
+        
+        
 
         
-        GameObject built = Instantiate(selectedObjectSO.prefab, GetWorldPosition(placeCoord), Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0));
+        if(selectedObjectSO.buildingName == "Fishing Shack")
+        {
+            FishingSpotScript script = buildScripts.GetComponent<FishingSpotScript>();
+            peopleManager.allFishingSpots.Add(script);
+
+            buildScripts.GetComponent<BuildingTaskInfo>().gridPos = new Vector3Int((int)placeCoord.x, (int)placeCoord.y, (int)placeCoord.z);
+        }
+        else if(selectedObjectSO.buildingName == "Storage Space")
+        {
+            StorageScript script = buildScripts.GetComponent<StorageScript>();
+            
+            peopleManager.allStorageSpots.Add(new Vector3Int((int)placeCoord.x, (int)placeCoord.y, (int)placeCoord.z), script);
+
+
+            buildScripts.GetComponent<BuildingTaskInfo>().gridPos = new Vector3Int((int)placeCoord.x, (int)placeCoord.y, (int)placeCoord.z);
+        }
+        
+    }
+
+    
+    public void AttemptBuild(Vector3Int checkCoord, Vector3 placeCoord, bool canBuild, BuildingObjectSO toBuild)
+    {
+        /*
+        if (!canBuild)
+        {
+            return;
+        }
+        foreach (KeyValuePair<ResourceSO, int> resource in toBuild.buildingResources)
+        {
+            playerResources.ChangeResourceAmount(resource.Key, -resource.Value);
+        }
+
+        //set entryways
+        Dictionary<Vector3Int, Vector3Int[]> doors = new Dictionary<Vector3Int, Vector3Int[]>();
+        foreach (EntryWay entryWay in toBuild.entryWays)
+        {
+            doors.Add(entryWay.position, entryWay.directions);
+        }
+
+        for (int x = 0; x < toBuild.x; x++)
+        {
+            for (int y = 0; y < toBuild.y; y++)
+            {
+                for (int z = 0; z < toBuild.z; z++)
+                {
+                    Vector3Int currentCheckCoords = new Vector3Int(checkCoord.x + x * tickers.x, checkCoord.y + y * tickers.y, checkCoord.z + z * tickers.z);
+
+                    gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).occupied = true;
+                    gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).section = selectedObjectSO.sections.GetValue(x, y, z);
+                    gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).section.wholeBuild = selectedObjectSO;
+
+
+                    if (doors.ContainsKey(new Vector3Int(x, y, z)))
+                    {
+                        AddOccupiedtoPathfindingNode(currentCheckCoords, doors[new Vector3Int(x, y, z)]);
+                    }
+                    else
+                    {
+                        AddOccupiedtoPathfindingNode(currentCheckCoords);
+                    }
+
+                    if (y == 0)
+                    {
+                        BuildPillar(currentCheckCoords.x, currentCheckCoords.y - 1, currentCheckCoords.z);
+                    }
+
+                    if (y == toBuild.y - 1 && toBuild.topWalkable)
+                    {
+                        AddFloorToPathfindNode(new Vector3Int(currentCheckCoords.x, currentCheckCoords.y + 1, currentCheckCoords.z));
+                    }
+
+                    if (toBuild.walkableLevels.Contains(y))
+                    {
+                        AddFloorToPathfindNode(new Vector3Int(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z));
+                    }
+
+                    if (checkCoord.y + y > HighestPoint)
+                    {
+                        HighestPoint = checkCoord.y + y;
+                    }
+                }
+            }
+        }
+    
+
+
+
+        GameObject built = Instantiate(toBuild.prefab, GetWorldPosition(placeCoord), Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0));
         built.transform.parent = boatCentre;
 
-        if(selectedObjectSO.buildingName == "Fishing Shack")
+        if (toBuild.buildingName == "Fishing Shack")
         {
             FishingSpotScript script = built.GetComponent<FishingSpotScript>();
             peopleManager.allFishingSpots.Add(script);
 
             built.GetComponent<BuildingTaskInfo>().gridPos = new Vector3Int((int)placeCoord.x, (int)placeCoord.y, (int)placeCoord.z);
         }
-        else if(selectedObjectSO.buildingName == "Storage Space")
+        else if (toBuild.buildingName == "Storage Space")
         {
             StorageScript script = built.GetComponent<StorageScript>();
-            
+
             peopleManager.allStorageSpots.Add(new Vector3Int((int)placeCoord.x, (int)placeCoord.y, (int)placeCoord.z), script);
 
 
             built.GetComponent<BuildingTaskInfo>().gridPos = new Vector3Int((int)placeCoord.x, (int)placeCoord.y, (int)placeCoord.z);
         }
+        */
     }
-
+    
     void BuildPillar(int x, int y, int z){
         if(y < 0){
             return;
         }
         for(int checkX = -2; checkX < 3; checkX++){
             for(int checkZ = -2; checkZ < 3; checkZ++) {
-                if(checkX + x > grid.GetLength(0) -1 || checkZ + z > grid.GetLength(1) - 1|| checkX + x < 0 || checkZ + z < 0){
+                if(checkX + x > gridManager.grid.x -1 || checkZ + z > gridManager.grid.z - 1|| checkX + x < 0 || checkZ + z < 0){
                         continue;
                 }
 
-                if(grid[checkX + x, y, checkZ + z].pillared){
+                if(gridManager.grid.GetValue(checkX + x, y, checkZ + z).pillared){
                     //check connected
                     return;
                 }
@@ -538,11 +636,11 @@ public class BuildingScript : MonoBehaviour
             if(y < 0){
                 return;
             }
-            if(grid[x, y, z].occupied){
+            if(gridManager.grid.GetValue(x, y, z).occupied){
                 return;
             }
             
-            grid[x, y, z].pillared = true;
+            gridManager.grid.GetValue(x, y, z).pillared = true;
             
             GameObject built = Instantiate(pillarSO.prefab, GetWorldPosition(new Vector3(x, y, z)), Quaternion.identity);
             built.transform.parent = boatCentre;
@@ -553,7 +651,7 @@ public class BuildingScript : MonoBehaviour
 
     void AddOccupiedtoPathfindingNode(Vector3Int occupiedSpot, Vector3Int[] walkableDirs){
         Vector3Int[] rotatedWalkableDirs = new Vector3Int[walkableDirs.Length]; 
-        pathfinding.Nodes[occupiedSpot.x, occupiedSpot.y, occupiedSpot.z].hasFloor = true;
+        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.hasFloor = true;
 
         for (int i = 0; i < walkableDirs.Length; i++){
             rotatedWalkableDirs[i] = RotateVectors(walkableDirs[i], currentRotation);
@@ -566,20 +664,39 @@ public class BuildingScript : MonoBehaviour
         for(int x = 0; x < 3; x++){
             for(int y = 0; y < 3; y++){
                 for(int z = 0; z < 3; z++) {
-                    if(rotatedWalkableDirs.Contains(new Vector3Int(x - 1, y - 1, z - 1))){ 
-                        pathfinding.Nodes[occupiedSpot.x, occupiedSpot.y, occupiedSpot.z].enterableSides[x, y, z] = true;
-                        pathfinding.Nodes[occupiedSpot.x, occupiedSpot.y, occupiedSpot.z].walls[x, y, z] = false;
+                    if(rotatedWalkableDirs.Contains(new Vector3Int(x - 1, y - 1, z - 1))){
+                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.enterableSides[x, y, z] = true;
+                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.walls[x, y, z] = false;
                     }
                     else{
-                        pathfinding.Nodes[occupiedSpot.x, occupiedSpot.y, occupiedSpot.z].enterableSides[x, y, z] = false;
-                        pathfinding.Nodes[occupiedSpot.x, occupiedSpot.y, occupiedSpot.z].walls[x, y, z] = true;
+                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.enterableSides[x, y, z] = false;
+                        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.walls[x, y, z] = true;
                     }
                 }
             }
         }
         //UpdateSuroundingPathfindingNodes(occupiedSpot);
     }
-    
+
+    void AddOccupiedtoPathfindingNode(Vector3Int occupiedSpot)
+    {
+        gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.hasFloor = true;
+
+
+        for (int x = 0; x < 3; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                for (int z = 0; z < 3; z++)
+                {
+                    gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.enterableSides[x, y, z] = false;
+                    gridManager.grid.GetValue(occupiedSpot.x, occupiedSpot.y, occupiedSpot.z).pathfindingNode.walls[x, y, z] = true;
+                }
+            }
+        }
+        //UpdateSuroundingPathfindingNodes(occupiedSpot);
+    }
+
     Vector3Int RotateVectors(Vector3Int vectorToTurn, Rotation rotation){
         if(rotation == Rotation.forward){
             return vectorToTurn;
@@ -600,17 +717,17 @@ public class BuildingScript : MonoBehaviour
     }
 
     void AddFloorToPathfindNode(Vector3Int floorSpot){
-        if(pathfinding.Nodes[floorSpot.x, floorSpot.y, floorSpot.z].hasFloor){
+        if(gridManager.grid.GetValue(floorSpot.x, floorSpot.y, floorSpot.z).pathfindingNode.hasFloor){
             return;
         }
 
-        pathfinding.Nodes[floorSpot.x, floorSpot.y, floorSpot.z].hasFloor = true;
+        gridManager.grid.GetValue(floorSpot.x, floorSpot.y, floorSpot.z).pathfindingNode.hasFloor = true;
 
         for(int x = 0; x < 3; x++){
             for(int y = 0; y < 3; y++){
                 for(int z = 0; z < 3; z++) {
-                    pathfinding.Nodes[floorSpot.x, floorSpot.y, floorSpot.z].enterableSides[x , 1, z] = true;
-                    pathfinding.Nodes[floorSpot.x, floorSpot.y, floorSpot.z].enterableSides[x , 0, z] = true;
+                    gridManager.grid.GetValue(floorSpot.x, floorSpot.y, floorSpot.z).pathfindingNode.enterableSides[x , 1, z] = true;
+                    gridManager.grid.GetValue(floorSpot.x, floorSpot.y, floorSpot.z).pathfindingNode.enterableSides[x , 0, z] = true;
                 }
             }
         }
@@ -742,6 +859,8 @@ public class BuildingScript : MonoBehaviour
             rotationOffset = new Vector3Int(0, 0, 0);
         }
     }
+
+
 
 
 }

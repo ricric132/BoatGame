@@ -249,6 +249,96 @@ public class AStarPathfinding : MonoBehaviour
         return inRange;
     }
 
+
+    public List<PathfindingNode> NodeWithinRangeAdj(Vector3Int start, int range)
+    {
+        resetGrid();
+
+        gridManager.grid.GetValue(start.x, start.y, start.z).pathfindingNode.rootDistance = 0;
+        List<PathfindingNode> inRange = new List<PathfindingNode>();
+        Queue<PathfindingNode> nodesToVisit = new Queue<PathfindingNode>();
+        gridManager.grid.GetValue(start.x, start.y, start.z).pathfindingNode.UpdateNode(0f, null);
+        nodesToVisit.Enqueue(gridManager.grid.GetValue(start.x, start.y, start.z).pathfindingNode);
+
+        while (nodesToVisit.Count > 0)
+        {
+            PathfindingNode node = nodesToVisit.Dequeue();
+            Vector3Int currentCoord = node.coords;
+
+            gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.visited = true;
+
+            if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.rootDistance > range)
+            {
+                continue;
+            }
+
+            inRange.Add(node);
+
+
+
+            for (int x = -1; x < 2; x++)
+            {
+                for (int y = -1; y < 2; y++)
+                {
+
+                        if (currentCoord.x + x > gridManager.grid.x - 1 || currentCoord.z > gridManager.grid.y - 1 || currentCoord.y + y > gridManager.grid.z - 1 || currentCoord.x + x < 0 || currentCoord.z < 0 || currentCoord.y + y < 0)
+                        {
+                            continue;
+                        }
+                        if (gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode.visited)
+                        {
+                            continue;
+                        }
+                        if (gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode.enterableSides.GetValue(-x + 1, -y + 1, 1) == false)
+                        {
+                            continue;
+                        }
+                        if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.enterableSides.GetValue(x + 1, y + 1, 1) == false)
+                        {
+                            continue;
+                        }
+
+                        gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode.ChangeRootDist(node.rootDistance + 1);
+
+                        nodesToVisit.Enqueue(gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode);
+                    
+                }
+            }
+
+
+            for (int z = -1; z < 2; z++)
+            {
+                for (int y = -1; y < 2; y++)
+                {
+
+                    if (currentCoord.x > gridManager.grid.x - 1 || currentCoord.z + z > gridManager.grid.y - 1 || currentCoord.y + y > gridManager.grid.z - 1 || currentCoord.x < 0 || currentCoord.z + z < 0 || currentCoord.y + y < 0)
+                    {
+                        continue;
+                    }
+                    if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y + y, currentCoord.z + z).pathfindingNode.visited)
+                    {
+                        continue;
+                    }
+                    if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y + y, currentCoord.z + z).pathfindingNode.enterableSides.GetValue(1, -y + 1, -z + 1) == false)
+                    {
+                        continue;
+                    }
+                    if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.enterableSides.GetValue(1, y + 1, z + 1) == false)
+                    {
+                        continue;
+                    }
+
+                    gridManager.grid.GetValue(currentCoord.x, currentCoord.y + y, currentCoord.z + z).pathfindingNode.ChangeRootDist(node.rootDistance + 1);
+
+                    nodesToVisit.Enqueue(gridManager.grid.GetValue(currentCoord.x, currentCoord.y + y, currentCoord.z + z).pathfindingNode);
+                }
+            }
+        }
+
+
+        return inRange;
+    }
+
     void resetGrid()
     {
         for (int x = 0; x < gridManager.grid.x; x++)

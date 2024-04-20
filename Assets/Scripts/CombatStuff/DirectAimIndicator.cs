@@ -14,4 +14,16 @@ public class DirectAimIndicator : MonoBehaviour
         line.SetPosition(0, startLocation);
         line.SetPosition(1, targetSpot.transform.position);
     }
+
+    public void Toggle(bool on)
+    {
+        if (on)
+        {
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }

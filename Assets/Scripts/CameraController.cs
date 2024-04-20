@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class CameraController : MonoBehaviour
@@ -24,6 +26,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] float lateralMovementSpeed; 
     [SerializeField] float verticalMovementSpeed;
     [SerializeField] Transform lateralTrolly;
+    [SerializeField] UITest UITest;
+
     //[SerializeField] Transform boatCentre;
 
     // Start is called before the first frame update
@@ -35,6 +39,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
 
         //Single pivot at centre camera controller
         /* 
@@ -85,14 +90,17 @@ public class CameraController : MonoBehaviour
 
         lateralTrolly.localPosition += lateralTrolly.forward * z * lateralMovementSpeed * Time.deltaTime;
         lateralTrolly.localPosition += lateralTrolly.right * x * lateralMovementSpeed * Time.deltaTime;
-        lateralTrolly.localPosition += new Vector3(0, Input.mouseScrollDelta.y, 0) * verticalMovementSpeed * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (UITest.IsPointerOverUIElement() == false)
         {
-            float turnAmountX = Input.GetAxis("Mouse X");
-            lateralTrolly.rotation = Quaternion.Euler(lateralTrolly.rotation.eulerAngles + new Vector3(0, turnAmountX * turnSpeed * Time.deltaTime, 0));
+            lateralTrolly.localPosition += new Vector3(0, Input.mouseScrollDelta.y, 0) * verticalMovementSpeed * Time.deltaTime;
 
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                float turnAmountX = Input.GetAxis("Mouse X");
+                lateralTrolly.rotation = Quaternion.Euler(lateralTrolly.rotation.eulerAngles + new Vector3(0, turnAmountX * turnSpeed * Time.deltaTime, 0));
+
+            }
         }
-        
     }
 }

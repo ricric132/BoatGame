@@ -34,6 +34,10 @@ public class CombatController : MonoBehaviour
 
     AttackAbilitySO selectedAttack;
 
+    [SerializeField] AttackOptionsPanel attackOptionsPanel;
+    [SerializeField] CombatUIManager UI;
+
+
     public enum CombatPhases
     {
         Planning,
@@ -60,6 +64,11 @@ public class CombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentTurnTaker == null)
+        {
+            UI.SetUI(CombatUIManager.CombatUIPhase.None);
+        }
+
         if (currentPhase == CombatPhases.Action)
         {
             bool inAction = false;
@@ -116,6 +125,7 @@ public class CombatController : MonoBehaviour
 
                 if (attackType == AttackType.Direct)
                 {
+                    directAimIndicator.GetComponent<DirectAimIndicator>().Toggle(true);
                     if (hit.collider.gameObject != null && hit.collider.gameObject.TryGetComponent(out ITargetable target)) {
                         DirectAimData aimData = target.GetLocation();
 
@@ -161,6 +171,11 @@ public class CombatController : MonoBehaviour
 
                     }
                 }
+            }
+            else
+            {
+                directAimIndicator.GetComponent<DirectAimIndicator>().Toggle(false);
+                ClearHighlighted();
             }
 
             if (Input.GetKeyUp(KeyCode.T))
@@ -232,6 +247,8 @@ public class CombatController : MonoBehaviour
 
     void selectTurnTaker(CombatUnit unit)
     {
+        attackType = AttackType.None;
+        UI.SetUI(CombatUIManager.CombatUIPhase.ActionSelect);
         infoPanel.Setup(unit.GetName());
         currentTurnTaker = unit;
         SelectMovement();
@@ -268,11 +285,6 @@ public class CombatController : MonoBehaviour
         
     }
     */
-
-    public void selectRangedAttack()
-    {
-        attackType = AttackType.Direct;
-    }
 
     List<PathfindingNode> GetMovableTiles()
     {
@@ -324,8 +336,32 @@ public class CombatController : MonoBehaviour
         
     }
 
+    public void SetupAttackPanel()
+    {
+        UI.SetUI(CombatUIManager.CombatUIPhase.AttackSelect, currentTurnTaker);
+    }
+
+    public void SelectAttack(AttackAbilitySO attackAbilitySO)
+    {
+        selectedAttack = attackAbilitySO;
+        attackType = selectedAttack.attackType;
+    }
+
     int DistanceFrom(Vector3Int coord1, Vector3Int coord2)
     {
         return Mathf.Abs(coord1.x - coord2.x) + Mathf.Abs(coord1.y - coord2.y) + Mathf.Abs(coord1.z - coord2.z);
+    }
+
+    void ClearHighlighted()
+    {
+        foreach (GameObject GO in highlightedObjects)
+        {
+            if (GO.TryGetComponent(out ITargetable highlightable))
+            {
+                highlightable.WillHit(false);
+            }
+        }
+
+        highlightedObjects = new HashSet<GameObject>();
     }
 }

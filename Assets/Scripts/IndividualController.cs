@@ -193,10 +193,4 @@ public class IndividualController : MonoBehaviour
         HasTask = false;
         personManager.PeopleToTasks[this] = null;
     }
-
-    
-
-
-
-
 }

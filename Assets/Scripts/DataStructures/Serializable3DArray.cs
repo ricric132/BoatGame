@@ -36,7 +36,7 @@ public class Serializable3DArray<T>
 }
 
 [System.Serializable]
-class Serializable2DArray<T>
+public class Serializable2DArray<T>
 {
     [SerializeField] Serializable1DArray<T>[] arr2D;
 
@@ -62,9 +62,10 @@ class Serializable2DArray<T>
 }
 
 [System.Serializable]
-class Serializable1DArray<T>
+public class Serializable1DArray<T>
 {
     [SerializeField]Item<T>[] arr1D;
+    public int size;
 
     public Serializable1DArray(int size)
     {
@@ -73,6 +74,7 @@ class Serializable1DArray<T>
         {
             arr1D[i] = new Item<T>();
         }
+        this.size = size;
     }
 
     public T GetValue(int x)

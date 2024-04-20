@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class CombatUnit : MonoBehaviour
+public class CombatUnit : MonoBehaviour, ITargetable
 {
     public int moveRange;
 
@@ -16,8 +16,24 @@ public class CombatUnit : MonoBehaviour
 
     [SerializeField] LineRenderer pathIndicator;
 
-    public bool InAction; 
+    public bool InAction;
+
+    [SerializeField] string unitName;
+
+    public Material baseMaterial;
+    public Material hitIndicatorMaterial;
+    public MeshRenderer visual;
+
+    public DirectAimData directAimData;
+
+    public List<AttackAbilitySO> availableAttacks;
+
+    public int maxHP;
+    public int curHP;
+
+    public int weaponProficiency; 
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,5 +92,29 @@ public class CombatUnit : MonoBehaviour
     public void StartCombatState()
     {
         coords = buildingScript.GetXYZ(transform.position);
+    }
+
+    public string GetName()
+    {
+        return unitName;
+    }
+
+    public DirectAimData GetLocation()
+    {
+        directAimData.coords = coords;
+        return directAimData;
+    }
+
+    public void WillHit(bool hit)
+    {
+        if (hit)
+        {
+            Debug.Log("I've been hit captn");
+            visual.material = hitIndicatorMaterial;
+        }
+        else
+        {
+            visual.material = baseMaterial;
+        }
     }
 }

@@ -8,6 +8,7 @@ public class GridObject
     public bool occupied;
     public bool pillared;
     public BuildingSectionSO section;
+
     public int x;
     public int y;
     public int z;

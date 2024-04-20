@@ -316,7 +316,7 @@ public class BuildingScript : MonoBehaviour
                 }
                 else
                 {
-                    AttemptBuild(checkCoordsFuntional, checkCoordsVisual, canBuild);
+                    AttemptBuild(checkCoordsFuntional, checkCoordsVisual, canBuild, selectedObjectSO);
                 }
             }
         }            
@@ -431,7 +431,7 @@ public class BuildingScript : MonoBehaviour
         foreach (List<Vector3> preview in buildCoords)
         {
             bool canBuild = CheckCanBuild(new Vector3Int((int)preview[0].x, (int)preview[0].y, (int)preview[0].z), selectedObjectSO.x, selectedObjectSO.y, selectedObjectSO.z);
-            AttemptBuild(new Vector3Int((int)preview[0].x, (int)preview[0].y, (int)preview[0].z), preview[1], canBuild);
+            AttemptBuild(new Vector3Int((int)preview[0].x, (int)preview[0].y, (int)preview[0].z), preview[1], canBuild, selectedObjectSO);
         }
     }
 
@@ -456,7 +456,7 @@ public class BuildingScript : MonoBehaviour
         }
         list.Clear();
     }
-
+    
     public void AttemptBuild(Vector3Int checkCoord, Vector3 placeCoord, bool canBuild){
         if(!canBuild){
             return;
@@ -526,10 +526,8 @@ public class BuildingScript : MonoBehaviour
         
     }
 
-    
     public void AttemptBuild(Vector3Int checkCoord, Vector3 placeCoord, bool canBuild, BuildingObjectSO toBuild)
     {
-        /*
         if (!canBuild)
         {
             return;
@@ -538,13 +536,16 @@ public class BuildingScript : MonoBehaviour
         {
             playerResources.ChangeResourceAmount(resource.Key, -resource.Value);
         }
-
-        //set entryways
-        Dictionary<Vector3Int, Vector3Int[]> doors = new Dictionary<Vector3Int, Vector3Int[]>();
-        foreach (EntryWay entryWay in toBuild.entryWays)
-        {
-            doors.Add(entryWay.position, entryWay.directions);
-        }
+        
+        GameObject buildScripts = Instantiate(toBuild.scriptInstancePrefab);
+        
+        gridManager.buildingScripts.Add(buildScripts);
+        buildScripts.GetComponent<BuildingMasterScript>().x = checkCoord.x;
+        buildScripts.GetComponent<BuildingMasterScript>().y = checkCoord.y;
+        buildScripts.GetComponent<BuildingMasterScript>().z = checkCoord.z;
+        buildScripts.GetComponent<BuildingMasterScript>().rotation = currentRotation;
+        buildScripts.GetComponent<BuildingMasterScript>().SO = toBuild;
+        
 
         for (int x = 0; x < toBuild.x; x++)
         {
@@ -552,21 +553,18 @@ public class BuildingScript : MonoBehaviour
             {
                 for (int z = 0; z < toBuild.z; z++)
                 {
+
                     Vector3Int currentCheckCoords = new Vector3Int(checkCoord.x + x * tickers.x, checkCoord.y + y * tickers.y, checkCoord.z + z * tickers.z);
-
                     gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).occupied = true;
-                    gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).section = selectedObjectSO.sections.GetValue(x, y, z);
-                    gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).section.wholeBuild = selectedObjectSO;
+                    gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).section = toBuild.sections.GetValue(x, y, z);
+                    gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).section.masterScripts = buildScripts;
 
+                    GameObject built = Instantiate(toBuild.sections.GetValue(x, y, z).prefab, GetWorldPosition(placeCoord), Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0));
+                    built.transform.parent = boatCentre;
+                    built.GetComponent<BuildingSectionScript>().coords = currentCheckCoords;
 
-                    if (doors.ContainsKey(new Vector3Int(x, y, z)))
-                    {
-                        AddOccupiedtoPathfindingNode(currentCheckCoords, doors[new Vector3Int(x, y, z)]);
-                    }
-                    else
-                    {
-                        AddOccupiedtoPathfindingNode(currentCheckCoords);
-                    }
+                    AddOccupiedtoPathfindingNode(currentCheckCoords, toBuild.sections.GetValue(x, y, z).walkableDirs);
+
 
                     if (y == 0)
                     {
@@ -590,30 +588,28 @@ public class BuildingScript : MonoBehaviour
                 }
             }
         }
-    
 
 
 
-        GameObject built = Instantiate(toBuild.prefab, GetWorldPosition(placeCoord), Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0));
-        built.transform.parent = boatCentre;
+
 
         if (toBuild.buildingName == "Fishing Shack")
         {
-            FishingSpotScript script = built.GetComponent<FishingSpotScript>();
+            FishingSpotScript script = buildScripts.GetComponent<FishingSpotScript>();
             peopleManager.allFishingSpots.Add(script);
 
-            built.GetComponent<BuildingTaskInfo>().gridPos = new Vector3Int((int)placeCoord.x, (int)placeCoord.y, (int)placeCoord.z);
+            buildScripts.GetComponent<BuildingTaskInfo>().gridPos = new Vector3Int((int)placeCoord.x, (int)placeCoord.y, (int)placeCoord.z);
+            
         }
         else if (toBuild.buildingName == "Storage Space")
         {
-            StorageScript script = built.GetComponent<StorageScript>();
+            StorageScript script = buildScripts.GetComponent<StorageScript>();
 
             peopleManager.allStorageSpots.Add(new Vector3Int((int)placeCoord.x, (int)placeCoord.y, (int)placeCoord.z), script);
 
 
-            built.GetComponent<BuildingTaskInfo>().gridPos = new Vector3Int((int)placeCoord.x, (int)placeCoord.y, (int)placeCoord.z);
+            buildScripts.GetComponent<BuildingTaskInfo>().gridPos = new Vector3Int((int)placeCoord.x, (int)placeCoord.y, (int)placeCoord.z);
         }
-        */
     }
     
     void BuildPillar(int x, int y, int z){
@@ -857,6 +853,26 @@ public class BuildingScript : MonoBehaviour
         else if (currentRotation == Rotation.forward)
         {
             rotationOffset = new Vector3Int(0, 0, 0);
+        }
+    }
+
+    public Vector3Int RotToOffset(Rotation Rotation)
+    {
+        if (Rotation == Rotation.right)
+        {
+            return new Vector3Int(0, 0, 1);
+        }
+        else if (Rotation == Rotation.back)
+        {
+            return new Vector3Int(1, 0, 1);
+        }
+        else if (Rotation == Rotation.left)
+        {
+            return new Vector3Int(1, 0, 0);
+        }
+        else
+        {
+            return new Vector3Int(0, 0, 0);
         }
     }
 

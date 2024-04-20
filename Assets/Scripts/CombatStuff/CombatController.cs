@@ -17,17 +17,39 @@ public class CombatController : MonoBehaviour
     [SerializeField] GameObject moveIndicatorPrefab;
     List<GameObject> moveIndicators = new List<GameObject>();
 
+    [SerializeField] GameObject attackIndicatorPrefab;
+    List<GameObject> attackIndicators = new List<GameObject>();
+
     [SerializeField] Camera cam;
 
     bool started = false;
 
     public CombatPhases currentPhase = CombatPhases.Planning;
+
+    public GridManager gridManager;
+
+    [SerializeField] GameObject directAimIndicator;
+
+    HashSet<GameObject> highlightedObjects = new HashSet<GameObject>();
+
+    AttackAbilitySO selectedAttack;
+
     public enum CombatPhases
     {
         Planning,
         Action
     }
 
+
+    AttackType attackType = AttackType.None;
+    public enum AttackType
+    {
+        None,
+        Direct,
+        Lob
+    }
+
+    public UnitInfoPanel infoPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +108,58 @@ public class CombatController : MonoBehaviour
                             selectTurnTaker(unit);
                         }
                     }
+
+
+                }
+
+
+
+                if (attackType == AttackType.Direct)
+                {
+                    if (hit.collider.gameObject != null && hit.collider.gameObject.TryGetComponent(out ITargetable target)) {
+                        DirectAimData aimData = target.GetLocation();
+
+                        HitSpot hitSpot = GetLowestPen(aimData, hit.collider.gameObject);
+                        directAimIndicator.GetComponent<DirectAimIndicator>().SetLocation(buildings.GetWorldPositionCentre(currentTurnTaker.coords), buildings.GetWorldPosition(aimData.coords), hitSpot);
+
+                        Vector3 SourceToTarget = hitSpot.transform.position - buildings.GetWorldPositionCentre(currentTurnTaker.coords);
+                        Ray toTarget = new Ray(buildings.GetWorldPositionCentre(currentTurnTaker.coords), SourceToTarget.normalized);
+
+
+
+                        HashSet<GameObject> tempSet = new HashSet<GameObject>();
+                        RaycastHit[] penetrated = Physics.RaycastAll(toTarget, SourceToTarget.magnitude);
+     
+                        foreach(RaycastHit obj in penetrated)
+                        {
+                            tempSet.Add(obj.collider.gameObject);
+                        }
+
+                        foreach(GameObject GO in tempSet)
+                        {
+                            if (!highlightedObjects.Contains(GO))
+                            {
+                                if (GO.TryGetComponent(out ITargetable highlightable))
+                                {
+                                    highlightable.WillHit(true);
+                                }
+                            }
+                        }
+
+                        foreach (GameObject GO in highlightedObjects)
+                        {
+                            if (!tempSet.Contains(GO))
+                            {
+                                if (GO.TryGetComponent(out ITargetable highlightable))
+                                {
+                                    highlightable.WillHit(false);
+                                }
+                            }
+                        }
+
+                        highlightedObjects = tempSet;
+
+                    }
                 }
             }
 
@@ -98,7 +172,39 @@ public class CombatController : MonoBehaviour
                 }
                 TickTurn();
             }
+
         }
+    }
+
+    HitSpot GetLowestPen(DirectAimData target, GameObject targetGO)
+    {
+        HitSpot bestHitSpot = target.allHittableSpots[0];
+        int minPierce = int.MaxValue;
+        foreach (HitSpot hitspot in target.allHittableSpots)
+        {
+            Vector3 SourceToTarget = hitspot.transform.position - buildings.GetWorldPositionCentre(currentTurnTaker.coords);
+            Ray toTarget = new Ray(buildings.GetWorldPositionCentre(currentTurnTaker.coords), SourceToTarget.normalized);
+
+            RaycastHit[] penetrated = Physics.RaycastAll(toTarget, SourceToTarget.magnitude);
+
+            int totalPierce = 0;
+            foreach (RaycastHit hit in penetrated)
+            {
+                if (hit.collider.gameObject != gameObject && hit.collider.gameObject.TryGetComponent(out ITargetable intercept))
+                { 
+                    totalPierce += intercept.GetLocation().pierceNeeded;
+                }
+            }
+            hitspot.totalPierceNeeded = totalPierce;
+
+            if (totalPierce < minPierce)
+            {
+                minPierce = totalPierce; 
+                bestHitSpot = hitspot;
+            }
+        }
+
+        return bestHitSpot;
     }
 
     public void StartAction()
@@ -117,29 +223,21 @@ public class CombatController : MonoBehaviour
 
     void TickTurn()
     {
-        ClearIndicators();
         NextTurn();
         SetUnitPositions();
-        movableNodes = GetMovableTiles();
-        foreach(PathfindingNode node in movableNodes)
-        {
-            Debug.Log("placingTile :" + node.coords);
-            GameObject indicator = Instantiate(moveIndicatorPrefab, buildings.GetWorldPosition(node.coords), Quaternion.identity);
-            indicator.GetComponent<MoveIndicatorScript>().Coords = node.coords;
-            indicator.GetComponent<MoveIndicatorScript>().combatController = this;
-            moveIndicators.Add(indicator);
-        }
+        SelectMovement();
 
         Debug.Log("turnOver");
     }
 
     void selectTurnTaker(CombatUnit unit)
     {
+        infoPanel.Setup(unit.GetName());
         currentTurnTaker = unit;
-        selectMovement();
+        SelectMovement();
     }
 
-    void selectMovement()
+    public void SelectMovement()
     {
         ClearIndicators();
         movableNodes = GetMovableTiles();
@@ -151,6 +249,29 @@ public class CombatController : MonoBehaviour
             indicator.GetComponent<MoveIndicatorScript>().combatController = this;
             moveIndicators.Add(indicator);
         }
+    }
+
+    /*
+    public void ShowInRange()
+    {
+        
+        ClearIndicators();
+        Dictionary<Vector3Int, GridObject> inSightNodes = gridManager.GetLineOfSight(currentTurnTaker.coords, 5);
+
+        foreach (KeyValuePair<Vector3Int, GridObject> node in inSightNodes)
+        {
+            GameObject indicator = Instantiate(attackIndicatorPrefab, buildings.GetWorldPosition(node.Key.x, node.Key.y, node.Key.z), Quaternion.identity);
+            attackIndicators.Add(indicator);
+            indicator.GetComponent<OutlineIndicatorSides>().SetSides(node.Key, inSightNodes);
+
+        }
+        
+    }
+    */
+
+    public void selectRangedAttack()
+    {
+        attackType = AttackType.Direct;
     }
 
     List<PathfindingNode> GetMovableTiles()
@@ -177,7 +298,13 @@ public class CombatController : MonoBehaviour
         {
             Destroy(indicator);
         }
-        moveIndicators.Clear(); 
+        moveIndicators.Clear();
+
+        foreach (GameObject indicator in attackIndicators)
+        {
+            Destroy(indicator);
+        }
+        attackIndicators.Clear();
     }
 
     void SetUpCombat()
@@ -190,5 +317,15 @@ public class CombatController : MonoBehaviour
         currentTurnTaker = turnOrder.Peek();
         CombatUnit playedTurn = turnOrder.Dequeue();
         turnOrder.Enqueue(playedTurn);
+    }
+
+    void AimDirectAt()
+    {
+        
+    }
+
+    int DistanceFrom(Vector3Int coord1, Vector3Int coord2)
+    {
+        return Mathf.Abs(coord1.x - coord2.x) + Mathf.Abs(coord1.y - coord2.y) + Mathf.Abs(coord1.z - coord2.z);
     }
 }

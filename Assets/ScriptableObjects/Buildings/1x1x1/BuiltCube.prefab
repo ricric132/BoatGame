@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2578511403641526617}
   - component: {fileID: 5213696525946971180}
   - component: {fileID: 1539280265934741212}
+  - component: {fileID: 8693978335562446681}
   m_Layer: 8
   m_Name: BuiltCube
   m_TagString: Untagged
@@ -105,6 +106,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8693978335562446681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055326508379955162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d718bafe33c054fab097a8e55042f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coords: {x: 0, y: 0, z: 0}
 --- !u!1 &1434637445201457590
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3852252219677174884}
+  - component: {fileID: 2591285779794182951}
   m_Layer: 8
   m_Name: BuiltCube
   m_TagString: Untagged
@@ -137,3 +152,16 @@ Transform:
   - {fileID: 2216397626757581026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2591285779794182951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434637445201457590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d718bafe33c054fab097a8e55042f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coords: {x: 0, y: 0, z: 0}

@@ -46,4 +46,9 @@ public class CombatUIManager : MonoBehaviour
 
         currentUIPhase = phase;
     }
+
+    public CombatUIPhase GetPhase()
+    {
+        return currentUIPhase;
+    }
 }

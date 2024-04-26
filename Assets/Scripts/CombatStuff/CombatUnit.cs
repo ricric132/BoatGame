@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class CombatUnit : MonoBehaviour, ITargetable
@@ -31,8 +32,15 @@ public class CombatUnit : MonoBehaviour, ITargetable
     public int maxHP;
     public int curHP;
 
-    public int weaponProficiency; 
-    
+    public int weaponProficiency;
+
+    [SerializeField] GameObject bulletPrefab;
+
+
+    int actionIndex = 0;
+    List<CombatAction> queuedActions = new List<CombatAction>();
+
+   
 
     // Start is called before the first frame update
     void Start()
@@ -49,11 +57,49 @@ public class CombatUnit : MonoBehaviour, ITargetable
         {
             InAction = true;
 
+    
+        }
+    }
+
+    public IEnumerator RunActions()
+    {
+        Debug.Log("running" + queuedActions.Count);
+        actionIndex = 0;
+        while(actionIndex < queuedActions.Count)
+        {
+            CombatAction action = queuedActions[actionIndex];
+            Debug.Log(action.type);
+            if (action.type == ActionType.Move)
+                            {
+                currentPath = action.movementPath;
+                yield return Move();
+            }
+
+            if(action.type == ActionType.Attack)
+            {
+                Debug.Log("Check");
+                if(action.action.attackType == CombatController.AttackType.Direct)
+                {
+                    yield return DirectAttack(action);
+                }
+            }
+
+            actionIndex++;
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        queuedActions.Clear();
+    }
+
+    IEnumerator Move()
+    {
+        while (currentPath != null)
+        {
             Vector3[] points = new Vector3[currentPath.Count - waypointNum + 1];
             points[0] = transform.position;
-            for (int i = 0; i < currentPath.Count-waypointNum; i++)
+            for (int i = 0; i < currentPath.Count - waypointNum; i++)
             {
-                points[i+1] = buildingScript.GetWorldPositionCentre(currentPath[i+waypointNum].coords);
+                points[i + 1] = buildingScript.GetWorldPositionCentre(currentPath[i + waypointNum].coords);
             }
             pathIndicator.SetVertexCount(currentPath.Count - waypointNum + 1);
             pathIndicator.SetPositions(points);
@@ -73,8 +119,24 @@ public class CombatUnit : MonoBehaviour, ITargetable
                 }
             }
             transform.position += (nextWaypoint - transform.position).normalized * 2.5f * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
         }
+        yield return null;
     }
+
+    IEnumerator DirectAttack(CombatAction action)
+    {
+        Debug.Log("shooting");
+        int random = Random.Range(0, action.target.allHittableSpots.Count - 1);
+        HitSpot target =  action.target.allHittableSpots[random];
+        if(target != null)
+        {
+            BulletScript bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<BulletScript>();
+            yield return bullet.Fire(target);
+        }
+        yield return null;  
+    }
+
 
     public async void SetPath(List<PathfindingNode> path)
     {
@@ -87,6 +149,8 @@ public class CombatUnit : MonoBehaviour, ITargetable
         }
         pathIndicator.SetVertexCount(path.Count);
         pathIndicator.SetPositions(points);
+
+        queuedActions.Add(new CombatAction(path));
     }
 
     public void StartCombatState()
@@ -116,5 +180,11 @@ public class CombatUnit : MonoBehaviour, ITargetable
         {
             visual.material = baseMaterial;
         }
+    }
+
+    public void QueueAction(AttackAbilitySO action, DirectAimData target)
+    {
+       queuedActions.Add(new CombatAction(action, target));
+       Debug.Log("queued");
     }
 }

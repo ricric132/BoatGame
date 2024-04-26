@@ -7,5 +7,4 @@ public interface ITargetable
     DirectAimData GetLocation();
     void WillHit(bool hit);
     
-
 }

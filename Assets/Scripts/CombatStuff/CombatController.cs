@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -106,30 +107,38 @@ public class CombatController : MonoBehaviour
                     }
                 }
 
-
-                CombatUnit unit;
-                if (hit.collider.gameObject.TryGetComponent<CombatUnit>(out unit))
+                if(UI.GetPhase() != CombatUIManager.CombatUIPhase.AttackSelect)
                 {
-                    if (Units.Contains(unit))
+                    CombatUnit unit;
+                    if (hit.collider.gameObject.TryGetComponent<CombatUnit>(out unit))
                     {
-                        if (Input.GetMouseButtonDown(0))
+                        if (Units.Contains(unit))
                         {
-                            selectTurnTaker(unit);
+                            if (Input.GetMouseButtonDown(0))
+                            {
+                                selectTurnTaker(unit);
+                            }
                         }
                     }
-
-
                 }
 
-
-
-                if (attackType == AttackType.Direct)
+                if (attackType == AttackType.Direct && currentTurnTaker != null)
                 {
                     directAimIndicator.GetComponent<DirectAimIndicator>().Toggle(true);
                     if (hit.collider.gameObject != null && hit.collider.gameObject.TryGetComponent(out ITargetable target)) {
                         DirectAimData aimData = target.GetLocation();
 
                         HitSpot hitSpot = GetLowestPen(aimData, hit.collider.gameObject);
+
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            currentTurnTaker.QueueAction(selectedAttack, aimData);
+                            currentTurnTaker = null;
+                            attackType = AttackType.None;
+                            
+                            return;
+                        }
+
                         directAimIndicator.GetComponent<DirectAimIndicator>().SetLocation(buildings.GetWorldPositionCentre(currentTurnTaker.coords), buildings.GetWorldPosition(aimData.coords), hitSpot);
 
                         Vector3 SourceToTarget = hitSpot.transform.position - buildings.GetWorldPositionCentre(currentTurnTaker.coords);
@@ -225,7 +234,30 @@ public class CombatController : MonoBehaviour
     public void StartAction()
     {
         ClearIndicators();
+        StartCoroutine(RunActions());
+        //currentPhase = CombatPhases.Action;
+    }
+
+    IEnumerator RunActions()
+    {
         currentPhase = CombatPhases.Action;
+        NextTurn();
+        CombatUnit StartingTurn = currentTurnTaker;
+
+        while (true)
+        {
+            yield return currentTurnTaker.RunActions();
+
+            yield return new WaitForSeconds(0.5f);
+
+            if(turnOrder.Peek() == StartingTurn)
+            {
+                yield break;
+            }
+            NextTurn();
+        }
+
+        currentPhase = CombatPhases.Planning;
     }
 
     void SetUnitPositions()

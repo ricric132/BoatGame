@@ -12,4 +12,7 @@ public class AttackAbilitySO : ScriptableObject
     
     public int minRange;
     public int maxRange;
+
+    public int weight;  
+
 }

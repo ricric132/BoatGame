@@ -11,6 +11,7 @@ public class DirectAimIndicator : MonoBehaviour
     public void SetLocation(Vector3 startLocation, Vector3 endLocation, HitSpot targetSpot)
     {
         box.transform.position = endLocation;
+        line.transform.position = Vector3.zero;
         line.SetPosition(0, startLocation);
         line.SetPosition(1, targetSpot.transform.position);
     }

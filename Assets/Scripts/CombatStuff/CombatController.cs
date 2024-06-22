@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class CombatController : MonoBehaviour
 {
-    Queue<CombatUnit> turnOrder = new Queue<CombatUnit>();
+    List<CombatUnit> turnOrder = new List<CombatUnit>();
     HashSet<CombatUnit> Units = new HashSet<CombatUnit>();
 
     CombatUnit currentTurnTaker = null;
@@ -37,6 +37,9 @@ public class CombatController : MonoBehaviour
 
     [SerializeField] AttackOptionsPanel attackOptionsPanel;
     [SerializeField] CombatUIManager UI;
+    [SerializeField] UITest UITest;
+
+    [SerializeField] ArcIndicator arcIndicator;
 
 
     public enum CombatPhases
@@ -59,7 +62,7 @@ public class CombatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -73,7 +76,7 @@ public class CombatController : MonoBehaviour
         if (currentPhase == CombatPhases.Action)
         {
             bool inAction = false;
-            foreach(CombatUnit unit in Units)
+            foreach (CombatUnit unit in Units)
             {
                 if (unit.InAction == true)
                 {
@@ -82,7 +85,7 @@ public class CombatController : MonoBehaviour
                 }
             }
 
-            if(inAction == false)
+            if (inAction == false)
             {
                 currentPhase = CombatPhases.Planning;
                 SetUnitPositions();
@@ -94,30 +97,37 @@ public class CombatController : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100f))
+            if (Physics.Raycast(ray, out hit, 100f) && UITest.IsPointerOverUIElement() == false)
             {
                 if (moveIndicators.Contains(hit.collider.gameObject))
                 {
                     hit.collider.gameObject.GetComponent<MoveIndicatorScript>().hovered = true;
                     if (Input.GetMouseButtonDown(0))
                     {
-                        currentTurnTaker.SetPath(pathfinder.GetPath(currentTurnTaker.coords, hit.collider.gameObject.GetComponent<MoveIndicatorScript>().Coords));
-                        ClearIndicators();
-                        //TickTurn();
+                        IEnumerator coroutine = (IEnumerator)StartMovement(hit.collider.gameObject.GetComponent<MoveIndicatorScript>().Coords);
+                        StartCoroutine(coroutine);
                     }
                 }
 
-                if(UI.GetPhase() != CombatUIManager.CombatUIPhase.AttackSelect)
+                if (UI.GetPhase() != CombatUIManager.CombatUIPhase.AttackSelect)
                 {
-                    CombatUnit unit;
-                    if (hit.collider.gameObject.TryGetComponent<CombatUnit>(out unit))
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        if (Units.Contains(unit))
+                        CombatUnit unit;
+                        if (hit.collider.gameObject.TryGetComponent<CombatUnit>(out unit))
                         {
-                            if (Input.GetMouseButtonDown(0))
+                            if (Units.Contains(unit))
                             {
                                 selectTurnTaker(unit);
                             }
+                            else
+                            {
+                                currentTurnTaker = null;
+                            }
+                        }
+                        else
+                        {
+                            currentTurnTaker = null;
                         }
                     }
                 }
@@ -125,17 +135,18 @@ public class CombatController : MonoBehaviour
                 if (attackType == AttackType.Direct && currentTurnTaker != null)
                 {
                     directAimIndicator.GetComponent<DirectAimIndicator>().Toggle(true);
-                    if (hit.collider.gameObject != null && hit.collider.gameObject.TryGetComponent(out ITargetable target)) {
+                    if (hit.collider.gameObject != null && hit.collider.gameObject.TryGetComponent(out ITargetable target))
+                    {
                         DirectAimData aimData = target.GetLocation();
 
                         HitSpot hitSpot = GetLowestPen(aimData, hit.collider.gameObject);
+                     
 
                         if (Input.GetMouseButtonDown(0))
                         {
-                            currentTurnTaker.QueueAction(selectedAttack, aimData);
-                            currentTurnTaker = null;
-                            attackType = AttackType.None;
-                            
+
+                            IEnumerator coroutine = (IEnumerator)StartDirectAttack(aimData, hitSpot);
+                            StartCoroutine(coroutine);
                             return;
                         }
 
@@ -144,17 +155,15 @@ public class CombatController : MonoBehaviour
                         Vector3 SourceToTarget = hitSpot.transform.position - buildings.GetWorldPositionCentre(currentTurnTaker.coords);
                         Ray toTarget = new Ray(buildings.GetWorldPositionCentre(currentTurnTaker.coords), SourceToTarget.normalized);
 
-
-
                         HashSet<GameObject> tempSet = new HashSet<GameObject>();
                         RaycastHit[] penetrated = Physics.RaycastAll(toTarget, SourceToTarget.magnitude);
-     
-                        foreach(RaycastHit obj in penetrated)
+
+                        foreach (RaycastHit obj in penetrated)
                         {
                             tempSet.Add(obj.collider.gameObject);
                         }
 
-                        foreach(GameObject GO in tempSet)
+                        foreach (GameObject GO in tempSet)
                         {
                             if (!highlightedObjects.Contains(GO))
                             {
@@ -177,16 +186,22 @@ public class CombatController : MonoBehaviour
                         }
 
                         highlightedObjects = tempSet;
-
                     }
                 }
+                else if (attackType == AttackType.Lob)
+                {
+
+                    arcIndicator.Toggle(true);
+                    arcIndicator.SetUp(currentTurnTaker.gameObject.transform.position, buildings.GetWorldPositionCentre(buildings.GetXYZ(hit.point + hit.normal * 0.01f)) - new Vector3(0, 0.5f, 0), currentTurnTaker.stats.STR, selectedAttack.weight);
+                }
+
             }
             else
             {
                 directAimIndicator.GetComponent<DirectAimIndicator>().Toggle(false);
+                arcIndicator.Toggle(false);
                 ClearHighlighted();
             }
-
             if (Input.GetKeyUp(KeyCode.T))
             {
                 if (!started)
@@ -194,7 +209,6 @@ public class CombatController : MonoBehaviour
                     SetUpCombat();
                     started = true;
                 }
-                TickTurn();
             }
 
         }
@@ -215,7 +229,7 @@ public class CombatController : MonoBehaviour
             foreach (RaycastHit hit in penetrated)
             {
                 if (hit.collider.gameObject != gameObject && hit.collider.gameObject.TryGetComponent(out ITargetable intercept))
-                { 
+                {
                     totalPierce += intercept.GetLocation().pierceNeeded;
                 }
             }
@@ -223,7 +237,7 @@ public class CombatController : MonoBehaviour
 
             if (totalPierce < minPierce)
             {
-                minPierce = totalPierce; 
+                minPierce = totalPierce;
                 bestHitSpot = hitspot;
             }
         }
@@ -231,6 +245,29 @@ public class CombatController : MonoBehaviour
         return bestHitSpot;
     }
 
+    IEnumerable StartDirectAttack(DirectAimData target, HitSpot aimedSpot)
+    {
+        currentPhase = CombatPhases.Action;
+        UI.SetUI(CombatUIManager.CombatUIPhase.ActionSelect, currentTurnTaker);
+        attackType = AttackType.None;
+
+        yield return currentTurnTaker.DirectAttack(selectedAttack, target, aimedSpot);
+
+        currentPhase = CombatPhases.Planning;
+
+    }
+
+
+    IEnumerable StartMovement(Vector3Int coords)
+    {
+        currentPhase = CombatPhases.Action;
+        currentTurnTaker.SetPath(pathfinder.GetPath(currentTurnTaker.coords, coords));
+        ClearIndicators();
+
+        yield return currentTurnTaker.Move();
+        currentPhase = CombatPhases.Planning;
+
+    }
     public void StartAction()
     {
         ClearIndicators();
@@ -241,40 +278,24 @@ public class CombatController : MonoBehaviour
     IEnumerator RunActions()
     {
         currentPhase = CombatPhases.Action;
-        NextTurn();
-        CombatUnit StartingTurn = currentTurnTaker;
 
-        while (true)
+        foreach(CombatUnit unit in turnOrder)
         {
-            yield return currentTurnTaker.RunActions();
+            yield return unit.RunActions();
 
             yield return new WaitForSeconds(0.5f);
-
-            if(turnOrder.Peek() == StartingTurn)
-            {
-                yield break;
-            }
-            NextTurn();
         }
 
         currentPhase = CombatPhases.Planning;
+        SetUnitPositions();
     }
 
     void SetUnitPositions()
     {
-        foreach(CombatUnit unit in Units)
+        foreach (CombatUnit unit in Units)
         {
             unit.StartCombatState();
         }
-    }
-
-    void TickTurn()
-    {
-        NextTurn();
-        SetUnitPositions();
-        SelectMovement();
-
-        Debug.Log("turnOver");
     }
 
     void selectTurnTaker(CombatUnit unit)
@@ -283,7 +304,6 @@ public class CombatController : MonoBehaviour
         UI.SetUI(CombatUIManager.CombatUIPhase.ActionSelect);
         infoPanel.Setup(unit.GetName());
         currentTurnTaker = unit;
-        SelectMovement();
     }
 
     public void SelectMovement()
@@ -324,13 +344,6 @@ public class CombatController : MonoBehaviour
         return pathfinder.NodeWithinRangeAdj(currentTurnTaker.coords, currentTurnTaker.moveRange); 
     }
 
-    void NextTurn()
-    {
-        currentTurnTaker = turnOrder.Peek();
-        CombatUnit playedTurn = turnOrder.Dequeue();
-        turnOrder.Enqueue(playedTurn);
-    }
-
     public void AddUnit(CombatUnit unit)
     {
         Units.Add(unit);
@@ -356,11 +369,10 @@ public class CombatController : MonoBehaviour
         turnOrder.Clear();
         foreach(CombatUnit unit in Units)
         {
-            turnOrder.Enqueue(unit);
+            turnOrder.Add(unit);
         }
-        currentTurnTaker = turnOrder.Peek();
-        CombatUnit playedTurn = turnOrder.Dequeue();
-        turnOrder.Enqueue(playedTurn);
+        currentTurnTaker = turnOrder[0];
+        SetUnitPositions();
     }
 
     void AimDirectAt()
@@ -370,6 +382,7 @@ public class CombatController : MonoBehaviour
 
     public void SetupAttackPanel()
     {
+        Debug.Log("attack selected");
         UI.SetUI(CombatUIManager.CombatUIPhase.AttackSelect, currentTurnTaker);
     }
 

@@ -18,7 +18,7 @@ public class BulletScript : MonoBehaviour
 
     }
 
-    public IEnumerator Fire(HitSpot target)
+    public IEnumerator Fire(HitSpot target, GameObject source)
     {
         Debug.Log("bullet");
         Vector3 direction = (target.transform.position - transform.position).normalized;
@@ -30,7 +30,7 @@ public class BulletScript : MonoBehaviour
             Collider[] hit = Physics.OverlapSphere(transform.position, 0.1f);
             foreach (Collider col in hit)
             {
-                if(col.gameObject.TryGetComponent(out ITargetable intercept))
+                if(col.gameObject.TryGetComponent(out ITargetable intercept) && col.gameObject != source)
                 {
                     availablePierce -= intercept.GetLocation().pierceNeeded;
                     //hit target

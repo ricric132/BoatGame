@@ -32,8 +32,17 @@ public class AttackCardScript : MonoBehaviour
         combatController = controller;
         nameText.text = attack.name;
         damageText.text = attack.baseDamage.ToString();
-        rangeText.text =  attack.minRange + "-" + attack.maxRange;
         selectedAttack = attack;
+
+        if (attack.attackType == CombatController.AttackType.Direct)
+        {   
+            rangeText.text = attack.minRange + "-" + attack.maxRange;
+        }
+        else if(attack.attackType == CombatController.AttackType.Lob)
+        {
+            rangeText.text = attack.weight + "kg";
+        }
+
         button.onClick.AddListener(ButtonOnClick);
     }
 

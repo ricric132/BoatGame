@@ -85,19 +85,35 @@ public class AStarPathfinding : MonoBehaviour
             for(int x = -1; x < 2; x++){
                 for(int y = -1; y < 2; y++){
                     for(int z = -1; z < 2; z++){  
+                        
                         if(currentNode.x + x > gridManager.grid.x -1 || currentNode.z + z > gridManager.grid.z - 1|| currentNode.y + y > gridManager.grid.y - 1|| currentNode.x + x < 0 || currentNode.z + z < 0 || currentNode.y + y < 0){
                             continue;
                         }
+                        
                         if(gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.visited){
                             continue;
                         }
-                        if(gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides.GetValue(-x+1, -y+1, -z+1) == false){
-                            continue;
-                        }
+                        
                         if(gridManager.grid.GetValue(currentNode.x, currentNode.y, currentNode.z).pathfindingNode.enterableSides.GetValue(x+1, y+1, z+1) == false){
                             continue;
                         }
                         
+                        if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides.GetValue(-x + 1, -y + 1, -z + 1) == false)
+                        {
+                            if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y, currentNode.z + z).pathfindingNode.enterableSides.GetValue(-x + 1, y + 1, -z + 1) == true && gridManager.grid.GetValue(currentNode.x + x, currentNode.y, currentNode.z + z).pathfindingNode.visited == false)
+                            {
+                                gridManager.grid.GetValue(currentNode.x + x, currentNode.y, currentNode.z + z).pathfindingNode.UpdateNode(gridManager.grid.GetValue(currentNode.x, currentNode.y, currentNode.z).pathfindingNode.rootDistance + 1, gridManager.grid.GetValue(currentNode.x, currentNode.y, currentNode.z).pathfindingNode);
+
+                                if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y, currentNode.z + z).pathfindingNode.coords == destination)
+                                {
+                                    return true;
+                                }
+
+                                nodesToVisit.Insert(gridManager.grid.GetValue(currentNode.x + x, currentNode.y, currentNode.z + z).pathfindingNode, gridManager.grid.GetValue(currentNode.x + x, currentNode.y, currentNode.z + z).pathfindingNode.distance);
+                            }
+                            continue;
+                        }
+
                         gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.UpdateNode(gridManager.grid.GetValue(currentNode.x, currentNode.y, currentNode.z).pathfindingNode.rootDistance + 1, gridManager.grid.GetValue(currentNode.x, currentNode.y, currentNode.z).pathfindingNode);
 
                         if(gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.coords == destination){
@@ -165,12 +181,23 @@ public class AStarPathfinding : MonoBehaviour
                         {
                             continue;
                         }
-                        if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides.GetValue(-x + 1, -y + 1, -z + 1) == false)
+                        if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides.GetValue(x + 1, y + 1, z + 1) == false)
                         {
                             continue;
                         }
-                        if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides.GetValue(x + 1, y + 1, z + 1) == false)
+                        if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.enterableSides.GetValue(-x + 1, -y + 1, -z + 1) == false)
                         {
+                            if (gridManager.grid.GetValue(currentNode.x + x, currentNode.y, currentNode.z + z).pathfindingNode.enterableSides.GetValue(-x + 1, y + 1, -z + 1) == true && gridManager.grid.GetValue(currentNode.x + x, currentNode.y + y, currentNode.z + z).pathfindingNode.visited == true)
+                            {
+                                gridManager.grid.GetValue(currentNode.x + x, currentNode.y, currentNode.z + z).pathfindingNode.UpdateNode(gridManager.grid.GetValue(currentNode.x, currentNode.y, currentNode.z).pathfindingNode.rootDistance + 1, gridManager.grid.GetValue(currentNode.x, currentNode.y, currentNode.z).pathfindingNode);
+
+                                if (destination.Contains(gridManager.grid.GetValue(currentNode.x + x, currentNode.y, currentNode.z + z).pathfindingNode.coords))
+                                {
+                                    return gridManager.grid.GetValue(currentNode.x + x, currentNode.y, currentNode.z + z).pathfindingNode.coords;
+                                }
+
+                                nodesToVisit.Enqueue(gridManager.grid.GetValue(currentNode.x + x, currentNode.y, currentNode.z + z).pathfindingNode);
+                            }
                             continue;
                         }
 
@@ -230,12 +257,18 @@ public class AStarPathfinding : MonoBehaviour
                         {
                             continue;
                         }
-                        if (gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z + z).pathfindingNode.enterableSides.GetValue(-x + 1, -y + 1, -z + 1) == false)
+                        if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.enterableSides.GetValue(x + 1, y + 1, z + 1) == false)
                         {
                             continue;
                         }
-                        if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.enterableSides.GetValue(x + 1, y + 1, z + 1) == false)
+                        if (gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z + z).pathfindingNode.enterableSides.GetValue(-x + 1, -y + 1, -z + 1) == false)
                         {
+                            if (gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y, currentCoord.z + z).pathfindingNode.enterableSides.GetValue(-x + 1, y + 1, -z + 1) == true)
+                            {
+                                gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y, currentCoord.z + z).pathfindingNode.ChangeRootDist(node.rootDistance + 1);
+
+                                nodesToVisit.Enqueue(gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y, currentCoord.z + z).pathfindingNode);
+                            }
                             continue;
                         }
 
@@ -259,13 +292,15 @@ public class AStarPathfinding : MonoBehaviour
         Queue<PathfindingNode> nodesToVisit = new Queue<PathfindingNode>();
         gridManager.grid.GetValue(start.x, start.y, start.z).pathfindingNode.UpdateNode(0f, null);
         nodesToVisit.Enqueue(gridManager.grid.GetValue(start.x, start.y, start.z).pathfindingNode);
+        gridManager.grid.GetValue(start.x, start.y, start.z).pathfindingNode.visited = true;
 
         while (nodesToVisit.Count > 0)
         {
+            Debug.Log("step");
             PathfindingNode node = nodesToVisit.Dequeue();
             Vector3Int currentCoord = node.coords;
 
-            gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.visited = true;
+            
 
             if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.rootDistance > range)
             {
@@ -274,34 +309,41 @@ public class AStarPathfinding : MonoBehaviour
 
             inRange.Add(node);
 
-
-
             for (int x = -1; x < 2; x++)
             {
                 for (int y = -1; y < 2; y++)
                 {
 
-                        if (currentCoord.x + x > gridManager.grid.x - 1 || currentCoord.z > gridManager.grid.y - 1 || currentCoord.y + y > gridManager.grid.z - 1 || currentCoord.x + x < 0 || currentCoord.z < 0 || currentCoord.y + y < 0)
+                    if (currentCoord.x + x > gridManager.grid.x - 1 || currentCoord.z > gridManager.grid.y - 1 || currentCoord.y + y > gridManager.grid.z - 1 || currentCoord.x + x < 0 || currentCoord.z < 0 || currentCoord.y + y < 0)
+                    {
+                        continue;
+                    }
+                    if (gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode.visited)
+                    {
+                        continue;
+                    }
+                    if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.enterableSides.GetValue(x + 1, y + 1, 1) == false)
+                    {
+                        continue;
+                    }
+                    if (gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode.enterableSides.GetValue(-x + 1, -y + 1, 1) == false)
+                    {
+                    if (y != 1 &&  gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y, currentCoord.z).pathfindingNode.enterableSides.GetValue(-x + 1, y + 1, 1) == true && gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y, currentCoord.z).pathfindingNode.visited == false)
                         {
-                            continue;
+                            Debug.Log("throug stairs");
+                            gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y, currentCoord.z).pathfindingNode.ChangeRootDist(node.rootDistance + 1);
+                            nodesToVisit.Enqueue(gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y, currentCoord.z).pathfindingNode);
+                            gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y, currentCoord.z).pathfindingNode.visited = true;
                         }
-                        if (gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode.visited)
-                        {
-                            continue;
-                        }
-                        if (gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode.enterableSides.GetValue(-x + 1, -y + 1, 1) == false)
-                        {
-                            continue;
-                        }
-                        if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.enterableSides.GetValue(x + 1, y + 1, 1) == false)
-                        {
-                            continue;
-                        }
+                        continue;
+                    }
 
-                        gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode.ChangeRootDist(node.rootDistance + 1);
+                    gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode.ChangeRootDist(node.rootDistance + 1);
 
-                        nodesToVisit.Enqueue(gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode);
-                    
+                    nodesToVisit.Enqueue(gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode);
+
+                    gridManager.grid.GetValue(currentCoord.x + x, currentCoord.y + y, currentCoord.z).pathfindingNode.visited = true;
+
                 }
             }
 
@@ -319,18 +361,27 @@ public class AStarPathfinding : MonoBehaviour
                     {
                         continue;
                     }
-                    if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y + y, currentCoord.z + z).pathfindingNode.enterableSides.GetValue(1, -y + 1, -z + 1) == false)
+                    if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.enterableSides.GetValue(1, y + 1, z + 1) == false)
                     {
                         continue;
                     }
-                    if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z).pathfindingNode.enterableSides.GetValue(1, y + 1, z + 1) == false)
+                    if (gridManager.grid.GetValue(currentCoord.x, currentCoord.y + y, currentCoord.z + z).pathfindingNode.enterableSides.GetValue(1, -y + 1, -z + 1) == false)
                     {
+                        if (y != 1 && gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z + z).pathfindingNode.enterableSides.GetValue(1, y + 1, -z + 1) == true && gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z + z).pathfindingNode.visited == false)
+                        {
+                            Debug.Log("through stairs");
+                            gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z + z).pathfindingNode.ChangeRootDist(node.rootDistance + 1);
+                            nodesToVisit.Enqueue(gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z + z).pathfindingNode);
+                            gridManager.grid.GetValue(currentCoord.x, currentCoord.y, currentCoord.z + z).pathfindingNode.visited = true;
+                        }
                         continue;
                     }
 
                     gridManager.grid.GetValue(currentCoord.x, currentCoord.y + y, currentCoord.z + z).pathfindingNode.ChangeRootDist(node.rootDistance + 1);
 
                     nodesToVisit.Enqueue(gridManager.grid.GetValue(currentCoord.x, currentCoord.y + y, currentCoord.z + z).pathfindingNode);
+
+                    gridManager.grid.GetValue(currentCoord.x, currentCoord.y + y, currentCoord.z+ z).pathfindingNode.visited = true;
                 }
             }
         }

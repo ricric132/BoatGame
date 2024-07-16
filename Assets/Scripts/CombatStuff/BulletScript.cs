@@ -5,6 +5,8 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public int pierce = 1;
+    public int damage = 5;
+    public
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +29,14 @@ public class BulletScript : MonoBehaviour
         while (availablePierce > 0)
         {
             transform.position += direction * 5 * Time.deltaTime;
-            Collider[] hit = Physics.OverlapSphere(transform.position, 0.1f);
+            Collider[] hit = Physics.OverlapSphere(transform.position, 0.01f);
             foreach (Collider col in hit)
             {
                 if(col.gameObject.TryGetComponent(out ITargetable intercept) && col.gameObject != source)
                 {
                     availablePierce -= intercept.GetLocation().pierceNeeded;
-                    //hit target
+                    intercept.TakeDamage(damage, CombatController.DamageType.Piercing, source.GetComponent<CombatUnit>(), transform.position);
+
 
                     if(availablePierce <= 0)
                     {

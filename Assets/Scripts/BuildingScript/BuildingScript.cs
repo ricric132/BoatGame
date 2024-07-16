@@ -37,6 +37,7 @@ public class BuildingScript : MonoBehaviour
     [SerializeField] PlayerResources playerResources;
 
     public enum Rotation{
+        none = -1,
         forward = 0,
         left = 3,
         right = 1,
@@ -248,6 +249,11 @@ public class BuildingScript : MonoBehaviour
             //previewObjectTargetCoords = worldPos - origin;
             //previewObjectStartCoords = previewObjectOffset;
 
+            if(selectedObjectSO != null && (stairBuildingStarted == false || buildCoords.Count == 0))
+            {
+                previewObject.SetActive(true);
+            }
+
             if(previewObjectPrevCoords != checkCoordsVisual){
                 previewObjectLerpTimer = 0;
                 previewObjectTargetCoords = new Vector3(checkCoordsVisual.x , checkCoordsVisual.y, checkCoordsVisual.z) * tileSize;
@@ -276,8 +282,8 @@ public class BuildingScript : MonoBehaviour
                 //scrapped stairway drag indicator
                 
                 previewObject.SetActive(false);
-                int xDiff = checkCoordsVisual.x - stairStartCoord.x;
-                int zDiff = checkCoordsVisual.z - stairStartCoord.z;
+                int xDiff = checkCoordsFuntional.x - stairStartCoord.x;
+                int zDiff = checkCoordsFuntional.z - stairStartCoord.z;
                 
                 if(Mathf.Abs(xDiff) > Mathf.Abs(zDiff)) 
                 {
@@ -288,6 +294,11 @@ public class BuildingScript : MonoBehaviour
                     
                     stairLockDirection = XZ.Z;
                 }
+                else
+                {
+                    stairLockDirection = XZ.None;
+                }
+
 
                 Vector3Int newCheckCoord = stairStartCoord;
                 if(stairLockDirection == XZ.X)
@@ -304,7 +315,14 @@ public class BuildingScript : MonoBehaviour
                 if (Input.GetKey(KeyCode.Mouse0) == false)
                 {
                     stairBuildingStarted = false;
-                    BuildGroup();
+                    if (buildCoords.Count == 0)
+                    {
+                        AttemptBuild(checkCoordsFuntional, checkCoordsVisual, canBuild, selectedObjectSO);
+                    }
+                    else
+                    {
+                        BuildGroup();
+                    }
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Mouse0)) {
@@ -377,6 +395,7 @@ public class BuildingScript : MonoBehaviour
         stairsBuildPreview.SetActive(true);
         ClearGameObjectList(stairBuildPreviewSections);
         buildCoords.Clear();
+
            
         if(dir == XZ.X)
         {
@@ -428,6 +447,7 @@ public class BuildingScript : MonoBehaviour
     }
     void BuildGroup()
     {
+        Debug.Log("build stairs");
         foreach (List<Vector3> preview in buildCoords)
         {
             bool canBuild = CheckCanBuild(new Vector3Int((int)preview[0].x, (int)preview[0].y, (int)preview[0].z), selectedObjectSO.x, selectedObjectSO.y, selectedObjectSO.z);
@@ -526,8 +546,12 @@ public class BuildingScript : MonoBehaviour
         
     }
 
-    public void AttemptBuild(Vector3Int checkCoord, Vector3 placeCoord, bool canBuild, BuildingObjectSO toBuild)
+    public void AttemptBuild(Vector3Int checkCoord, Vector3 placeCoord, bool canBuild, BuildingObjectSO toBuild, Rotation rot = Rotation.none)
     {
+        if(rot != Rotation.none)
+        {
+            SetRotation(rot);
+        }
         if (!canBuild)
         {
             return;
@@ -560,8 +584,11 @@ public class BuildingScript : MonoBehaviour
                     gridManager.grid.GetValue(currentCheckCoords.x, currentCheckCoords.y, currentCheckCoords.z).section.masterScripts = buildScripts;
 
                     GameObject built = Instantiate(toBuild.sections.GetValue(x, y, z).prefab, GetWorldPosition(placeCoord), Quaternion.Euler(0, gridRotation + (int)currentRotation * 90f, 0));
+                    Debug.Log((int)currentRotation * 90f + " " + currentRotation);
                     built.transform.parent = boatCentre;
                     built.GetComponent<BuildingSectionScript>().coords = currentCheckCoords;
+                    built.GetComponent<BuildingSectionScript>().buildingSectionSO = toBuild.sections.GetValue(x, y, z);
+                    built.GetComponent<BuildingSectionScript>().SetHP(toBuild.sections.GetValue(x, y, z).maxHp);
 
                     AddOccupiedtoPathfindingNode(currentCheckCoords, toBuild.sections.GetValue(x, y, z).walkableDirs);
 

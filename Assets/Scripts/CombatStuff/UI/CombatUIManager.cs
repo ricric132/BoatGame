@@ -6,12 +6,15 @@ public class CombatUIManager : MonoBehaviour
 {
     [SerializeField] GameObject ActionSelect;
     [SerializeField] GameObject AttackSelect;
+    [SerializeField] GameObject HoverPopup;
+    [SerializeField] List<ControllableUnitSideTab> unitSideTab = new List<ControllableUnitSideTab>();
 
     public enum CombatUIPhase
     {
         None,
         ActionSelect,
-        AttackSelect
+        AttackSelect,
+        OutOfCombat
     }
 
     CombatUIPhase currentUIPhase;
@@ -20,7 +23,7 @@ public class CombatUIManager : MonoBehaviour
     {
         if(phase == CombatUIPhase.None)
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(true);
             ActionSelect.SetActive(false);
             AttackSelect.SetActive(false);
         }
@@ -29,9 +32,9 @@ public class CombatUIManager : MonoBehaviour
             gameObject.SetActive(true);
             ActionSelect.SetActive(true);
             AttackSelect.SetActive(false);
-            if(unit != null && currentUIPhase != phase)
+            if(unit != null)
             {
-                //setup action pannel
+                ActionSelect.GetComponent<UnitInfoPanel>().Setup(unit);
             }
         }
 
@@ -57,5 +60,52 @@ public class CombatUIManager : MonoBehaviour
     public void ReturnToActionSelect()
     {
         SetUI(CombatUIPhase.ActionSelect);
+    }
+
+    public void ShowHoverPopupInfo(HoverPopupInfo info)
+    {
+        HoverPopup.SetActive(true);
+        HoverPopup.GetComponent<PopupInfoBox>().Setup(info);
+    }
+
+    public void HideHoverPopup()
+    {
+        HoverPopup.SetActive(false);
+    }
+
+    public void SetupSideBar(List<CombatUnit> controllable)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (controllable[i] != null)
+            {
+                unitSideTab[i].Setup(controllable[i].GetHoverPopupInfo());
+            }
+            else
+            {
+                unitSideTab[i].Hide();
+            }
+        }
+    }
+
+    public void UpdateSidebarHP(int index, float newHP)
+    {
+        StartCoroutine(unitSideTab[index].updateHP(newHP));
+    }
+    
+}
+
+public class HoverPopupInfo
+{
+    public string unitName;
+    public int maxHp;
+    public int curHp;
+    //add statuses and stats
+
+    public HoverPopupInfo(string _unitName, int _maxHP, int _curHp)
+    {
+        unitName = _unitName;
+        maxHp = _maxHP; 
+        curHp = _curHp;
     }
 }

@@ -67,7 +67,7 @@ public class GridManager : MonoBehaviour
             SaveGridObject obj = savedBuildings.GetValue(i);
             Vector3Int coord = new Vector3Int(obj.x, obj.y, obj.z);
             Vector3 coordWOffset = new Vector3(obj.x, obj.y, obj.z) + buildingScript.RotToOffset(obj.rot);
-            buildingScript.AttemptBuild(coord, coordWOffset, true, IDtoBuildingMap[obj.buildingID]);
+            buildingScript.AttemptBuild(coord, coordWOffset, true, IDtoBuildingMap[obj.buildingID], obj.rot);
         }
     }
 
@@ -133,6 +133,8 @@ public class GridManager : MonoBehaviour
         if (endLocation.x >= grid.x || endLocation.y >= grid.y || endLocation.z >= grid.y || endLocation.x < 0 || endLocation.y < 0 || endLocation.z < 0) { return false; }
         return !Physics.Linecast(buildingScript.GetWorldPositionCentre(start), buildingScript.GetWorldPositionCentre(endLocation));
     }
+
+
 }
 
 [Serializable]

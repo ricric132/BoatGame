@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 
 public class CombatUnit : MonoBehaviour, ITargetable
 {
-    public int moveRange;
-
     public Vector3Int coords = new Vector3Int();
     [SerializeField] BuildingScript buildingScript;
     [SerializeField] CombatController combatController;
@@ -18,8 +15,6 @@ public class CombatUnit : MonoBehaviour, ITargetable
     [SerializeField] LineRenderer pathIndicator;
 
     public bool InAction;
-
-    [SerializeField] string unitName;
 
     public Material baseMaterial;
     public Material hitIndicatorMaterial;
@@ -35,48 +30,36 @@ public class CombatUnit : MonoBehaviour, ITargetable
     public int weaponProficiency;
 
     [SerializeField] GameObject bulletPrefab;
-
-
-    int actionIndex = 0;
-    List<CombatAction> queuedActions = new List<CombatAction>();
-
-    [SerializeField] GameObject directAimIndicator;
+    [SerializeField] GameObject throwablePrefab;
 
     public CharacterInfo stats;
 
-   
+    public int remainingMovement;
+    public int actionsLeft;
+    public int maxActions = 1;
+
+    public bool dead;
+
+    [SerializeField] Transform HpBar;
+    [SerializeField] GameObject bloodSplurt;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         combatController.AddUnit(this);
         StartCombatState();
+        curHP = maxHP;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool aiming = false;
-        foreach(CombatAction action in queuedActions)
-        {
-            if (action.type == ActionType.Attack)
-            {
-                if (action.action.attackType == CombatController.AttackType.Direct)
-                {
-                    aiming = true;
-                    break;   
-                }
-            }
-        }
-        if (!aiming)
-        {
-            directAimIndicator.GetComponent<DirectAimIndicator>().Toggle(false);
-        }
 
-        if (currentPath != null && combatController.currentPhase == CombatController.CombatPhases.Action)
-        {
-            InAction = true;
-        }
     }
 
     /*
@@ -204,7 +187,7 @@ public class CombatUnit : MonoBehaviour, ITargetable
 
     public string GetName()
     {
-        return unitName;
+        return stats.unitName;
     }
 
     public DirectAimData GetLocation()
@@ -215,6 +198,7 @@ public class CombatUnit : MonoBehaviour, ITargetable
 
     public IEnumerator DirectAttack(AttackAbilitySO attack, DirectAimData target, HitSpot aimedSpot)
     {
+        actionsLeft--;
         Debug.Log("shooting");
         int random = Random.Range(0, target.allHittableSpots.Count - 1);
         HitSpot spot = target.allHittableSpots[random];
@@ -226,9 +210,28 @@ public class CombatUnit : MonoBehaviour, ITargetable
         yield return null;
     }
 
+    public IEnumerator LobAttack(Vector3[] points, AttackAbilitySO attack)
+    {
+        actionsLeft--;
+
+        ArcProjectile projectile = Instantiate(throwablePrefab, transform.position, Quaternion.identity).GetComponent<ArcProjectile>();
+        yield return projectile.Launch(points, attack);
+    }
+
+    public IEnumerator MeleeAttack(GameObject target,  AttackAbilitySO attack)
+    {
+        actionsLeft--;
+        if (target.TryGetComponent(out ITargetable hittable))
+        {
+            hittable.TakeDamage(attack.baseDamage, attack.damageType, this);
+        }
+        yield return null;
+    }
+
     public void SetPath(List<PathfindingNode> path)
     {
         waypointNum = 0;
+        nextWaypoint = transform.position;
         currentPath = path;
         Vector3[] points = new Vector3[path.Count];
         for (int i = 0; i < path.Count; i++)
@@ -238,17 +241,7 @@ public class CombatUnit : MonoBehaviour, ITargetable
         pathIndicator.SetVertexCount(path.Count);
         pathIndicator.SetPositions(points);
 
-        if (queuedActions.Count > 0)
-        {
-            if (queuedActions[queuedActions.Count - 1].type == ActionType.Move)
-            {
-                queuedActions[queuedActions.Count - 1] = new CombatAction(path);
-            }
-        }
-        else
-        {
-            queuedActions.Add(new CombatAction(path));
-        }
+        remainingMovement -= path.Count - 1;
     }
 
     public IEnumerator Move()
@@ -295,5 +288,52 @@ public class CombatUnit : MonoBehaviour, ITargetable
         {
             visual.material = baseMaterial;
         }
+    }
+
+    public void TickTurn()
+    {
+        actionsLeft = 1;
+        remainingMovement = stats.SPD;
+    }
+
+    public void TakeDamage(int damage, CombatController.DamageType damageType, CombatUnit attacker, Vector3 point = default(Vector3))
+    {
+        curHP -= damage;
+        HpBar.localScale = new Vector3((float)curHP / (float)maxHP, 1, 1);
+
+        combatController.UpdateUnitHP(this, curHP);
+
+        if(damageType == CombatController.DamageType.Piercing)
+        {
+            Quaternion q;
+            Vector3 a = Vector3.Cross(point, attacker.gameObject.transform.position);
+            q.x = a.x;
+            q.y = a.y;
+            q.z = a.z;
+            q.w = Mathf.Sqrt(Mathf.Pow(point.magnitude, 2) * Mathf.Pow(attacker.gameObject.transform.position.magnitude, 2)) + Vector3.Dot(point, attacker.gameObject.transform.position);
+
+            Instantiate(bloodSplurt, point, q);
+        }
+
+        if (curHP <= 0 && !dead)
+        {
+            dead = true;
+            transform.position = transform.position - new Vector3(0, 0.5f, 0);
+            transform.rotation = Quaternion.Euler(90f, 0, 0);
+
+            //combatController.UnitDie(this);
+            //Destroy(gameObject);
+        }
+    }
+
+    public HoverPopupInfo GetHoverPopupInfo()
+    {
+        return new HoverPopupInfo(stats.unitName, maxHP, curHP);
+
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }

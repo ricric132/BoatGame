@@ -119,6 +119,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coords: {x: 0, y: 0, z: 0}
+  willGetHit: 0
+  baseMaterial: {fileID: 0}
+  hitIndicatorMaterial: {fileID: 0}
+  visual: {fileID: 0}
+  aimableSpots: []
+  aimData:
+    allHittableSpots: []
+    aimedSpot: {x: 0, y: 0, z: 0}
+    coords: {x: 0, y: 0, z: 0}
+    pierceNeeded: 0
+  pierceRequired: 0
+  buildingSectionSO: {fileID: 0}
+  visualSections: []
 --- !u!1 &1434637445201457590
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,3 +178,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coords: {x: 0, y: 0, z: 0}
+  willGetHit: 0
+  baseMaterial: {fileID: 0}
+  hitIndicatorMaterial: {fileID: 0}
+  visual: {fileID: 0}
+  aimableSpots: []
+  aimData:
+    allHittableSpots: []
+    aimedSpot: {x: 0, y: 0, z: 0}
+    coords: {x: 0, y: 0, z: 0}
+    pierceNeeded: 0
+  pierceRequired: 0
+  buildingSectionSO: {fileID: 0}
+  visualSections:
+  - {fileID: 5213696525946971180}

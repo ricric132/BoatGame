@@ -28,6 +28,8 @@ public class ArcIndicator : MonoBehaviour
 
     Vector3 prevTargetPos = Vector3.zero;
 
+    [SerializeField] GameObject sphere;
+
 
     void Update()
     {
@@ -206,13 +208,24 @@ public class ArcIndicator : MonoBehaviour
         return false;
     }
 
-    public void SetUp(Vector3 newSource, Vector3 newTarget, int strength, float weight)
+    public void SetUp(Vector3 newSource, Vector3 newTarget, int strength, float weight, float aoe = 0)
     {
         target.position = newTarget;
         source.position = newSource;
         transform.position = newSource;
+
         
         maxVelocity = (strength*2)/weight;
+
+        if (aoe != 0)
+        {
+            sphere.SetActive(true);
+            sphere.transform.localScale = new Vector3(aoe, aoe, aoe);
+        }
+        else
+        {
+            sphere.SetActive(false);
+        }
     }
 
     public void Toggle(bool state)
@@ -220,4 +233,13 @@ public class ArcIndicator : MonoBehaviour
         gameObject.SetActive(state);
     }
 
+    public Vector3[] GetArcPoints()
+    {
+        Vector3[] points = new Vector3[lineRenderer.positionCount];
+
+        lineRenderer.GetPositions(points);
+
+        return points;
+
+    }
 }

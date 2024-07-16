@@ -27,19 +27,36 @@ public class CameraController : MonoBehaviour
     [SerializeField] float verticalMovementSpeed;
     [SerializeField] Transform lateralTrolly;
     [SerializeField] UITest UITest;
+    [SerializeField] Transform boatCentre;
+    [SerializeField] Transform boat;
+
+
+    [SerializeField] Cinemachine.CinemachineVirtualCamera freeMoveView;
+    [SerializeField] Cinemachine.CinemachineVirtualCamera boatMovementView;
+    public CameraState state;
+
+
+    public enum CameraState
+    {
+        freeMove,
+        boatOverview
+    }
+
+
 
     //[SerializeField] Transform boatCentre;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        state = CameraState.freeMove;
+        SetCameraState(CameraState.freeMove);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //pivotPoint.position = boatCentre.position;
 
         //Single pivot at centre camera controller
         /* 
@@ -85,22 +102,48 @@ public class CameraController : MonoBehaviour
 
         //lateral camera movement\
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        lateralTrolly.localPosition += lateralTrolly.forward * z * lateralMovementSpeed * Time.deltaTime;
-        lateralTrolly.localPosition += lateralTrolly.right * x * lateralMovementSpeed * Time.deltaTime;
-
-        if (UITest.IsPointerOverUIElement() == false)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            lateralTrolly.localPosition += new Vector3(0, Input.mouseScrollDelta.y, 0) * verticalMovementSpeed * Time.deltaTime;
-
-            if (Input.GetKey(KeyCode.Mouse1))
+            if(state == CameraState.freeMove)
             {
-                float turnAmountX = Input.GetAxis("Mouse X");
-                lateralTrolly.rotation = Quaternion.Euler(lateralTrolly.rotation.eulerAngles + new Vector3(0, turnAmountX * turnSpeed * Time.deltaTime, 0));
+                SetCameraState(CameraState.boatOverview);
+            }
+            else if (state == CameraState.boatOverview)
+            {
+                SetCameraState(CameraState.freeMove);
+            }
 
+        }
+
+        if (state == CameraState.freeMove)
+        {
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+
+            lateralTrolly.position += lateralTrolly.TransformDirection(0, 0, 1) * z * lateralMovementSpeed * Time.deltaTime;
+            lateralTrolly.position += lateralTrolly.TransformDirection(1, 0, 0) * x * lateralMovementSpeed * Time.deltaTime;
+
+            if (UITest.IsPointerOverUIElement() == false)
+            {
+                lateralTrolly.position += new Vector3(0, Input.mouseScrollDelta.y, 0) * verticalMovementSpeed * Time.deltaTime;
+
+                if (Input.GetKey(KeyCode.Mouse1))
+                {
+                    float turnAmountX = Input.GetAxis("Mouse X");
+                    lateralTrolly.rotation = Quaternion.Euler(lateralTrolly.rotation.eulerAngles + new Vector3(0, turnAmountX * turnSpeed * Time.deltaTime, 0));
+
+                }
             }
         }
+    }
+
+    void SetCameraState(CameraState _state)
+    {
+        state = _state;
+        freeMoveView.gameObject.SetActive(false);
+        boatMovementView.gameObject.SetActive(false);
+
+        if(state == CameraState.freeMove){freeMoveView.gameObject.SetActive(true); }
+        if(state == CameraState.boatOverview){boatMovementView.gameObject.SetActive(true); }
     }
 }

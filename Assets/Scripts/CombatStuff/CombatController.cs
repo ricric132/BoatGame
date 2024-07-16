@@ -4,11 +4,15 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CombatController : MonoBehaviour
 {
     List<CombatUnit> turnOrder = new List<CombatUnit>();
     HashSet<CombatUnit> Units = new HashSet<CombatUnit>();
+    
+    List<CombatUnit> controllable = new List<CombatUnit>();
+    
 
     CombatUnit currentTurnTaker = null;
     [SerializeField] AStarPathfinding pathfinder;
@@ -37,15 +41,29 @@ public class CombatController : MonoBehaviour
 
     [SerializeField] AttackOptionsPanel attackOptionsPanel;
     [SerializeField] CombatUIManager UI;
+    [SerializeField] CanvasManager mainCanvas;
     [SerializeField] UITest UITest;
 
     [SerializeField] ArcIndicator arcIndicator;
 
+    [SerializeField] TeamManager teamManager;
+
+    [SerializeField] PlayerUnitsManager playerUnitsManager;
+
+    [SerializeField] GameObject bombFX;
 
     public enum CombatPhases
     {
         Planning,
-        Action
+        Action,
+        Sim
+    }
+
+    public enum DamageType
+    {
+        Piercing,
+        Explosive,
+        Blunt
     }
 
 
@@ -54,7 +72,8 @@ public class CombatController : MonoBehaviour
     {
         None,
         Direct,
-        Lob
+        Lob,
+        Melee
     }
 
     public UnitInfoPanel infoPanel;
@@ -75,21 +94,12 @@ public class CombatController : MonoBehaviour
 
         if (currentPhase == CombatPhases.Action)
         {
-            bool inAction = false;
-            foreach (CombatUnit unit in Units)
-            {
-                if (unit.InAction == true)
-                {
-                    inAction = true;
-                    break;
-                }
-            }
+            return;
+        }
 
-            if (inAction == false)
-            {
-                currentPhase = CombatPhases.Planning;
-                SetUnitPositions();
-            }
+        if(currentPhase == CombatPhases.Sim)
+        {
+            return;
         }
 
         if (currentPhase == CombatPhases.Planning)
@@ -104,9 +114,17 @@ public class CombatController : MonoBehaviour
                     hit.collider.gameObject.GetComponent<MoveIndicatorScript>().hovered = true;
                     if (Input.GetMouseButtonDown(0))
                     {
-                        IEnumerator coroutine = (IEnumerator)StartMovement(hit.collider.gameObject.GetComponent<MoveIndicatorScript>().Coords);
-                        StartCoroutine(coroutine);
+                        StartCoroutine(StartMovement(hit.collider.gameObject.GetComponent<MoveIndicatorScript>().Coords));
                     }
+                }
+
+                if (hit.collider.gameObject.TryGetComponent(out ITargetable hovered))
+                {
+                    UI.ShowHoverPopupInfo(hovered.GetHoverPopupInfo());
+                }
+                else
+                {
+                    UI.HideHoverPopup();
                 }
 
                 if (UI.GetPhase() != CombatUIManager.CombatUIPhase.AttackSelect)
@@ -116,9 +134,16 @@ public class CombatController : MonoBehaviour
                         CombatUnit unit;
                         if (hit.collider.gameObject.TryGetComponent<CombatUnit>(out unit))
                         {
-                            if (Units.Contains(unit))
+                            if (Units.Contains(unit) && !unit.dead)
                             {
-                                selectTurnTaker(unit);
+                                if (IsControllable(unit))
+                                {
+                                    selectTurnTaker(unit);
+                                }
+                                else
+                                {
+                                    Debug.Log("not controllable");
+                                }
                             }
                             else
                             {
@@ -145,8 +170,7 @@ public class CombatController : MonoBehaviour
                         if (Input.GetMouseButtonDown(0))
                         {
 
-                            IEnumerator coroutine = (IEnumerator)StartDirectAttack(aimData, hitSpot);
-                            StartCoroutine(coroutine);
+                            StartCoroutine(StartDirectAttack(aimData, hitSpot));
                             return;
                         }
 
@@ -190,9 +214,62 @@ public class CombatController : MonoBehaviour
                 }
                 else if (attackType == AttackType.Lob)
                 {
-
                     arcIndicator.Toggle(true);
-                    arcIndicator.SetUp(currentTurnTaker.gameObject.transform.position, buildings.GetWorldPositionCentre(buildings.GetXYZ(hit.point + hit.normal * 0.01f)) - new Vector3(0, 0.5f, 0), currentTurnTaker.stats.STR, selectedAttack.weight);
+                    arcIndicator.SetUp(currentTurnTaker.gameObject.transform.position, buildings.GetWorldPositionCentre(buildings.GetXYZ(hit.point + hit.normal * 0.01f)) - new Vector3(0, 0.5f, 0), currentTurnTaker.stats.STR, selectedAttack.weight, selectedAttack.aoe);
+
+                    if(selectedAttack.aoe > 0)
+                    {
+                        Collider[] colliders = Physics.OverlapSphere(buildings.GetWorldPositionCentre(buildings.GetXYZ(hit.point + hit.normal * 0.01f)) - new Vector3(0, 0.5f, 0), selectedAttack.aoe/2);
+                        HashSet<GameObject> tempSet = new HashSet<GameObject>();
+                        foreach (Collider collider in colliders)
+                        {
+                            tempSet.Add(collider.gameObject);
+                        }
+
+                        foreach (GameObject GO in tempSet)
+                        {
+                            if (!highlightedObjects.Contains(GO))
+                            {
+                                if (GO.TryGetComponent(out ITargetable highlightable))
+                                {
+                                    highlightable.WillHit(true);
+                                }
+                            }
+                        }
+
+                        foreach (GameObject GO in highlightedObjects)
+                        {
+                            if (!tempSet.Contains(GO))
+                            {
+                                if (GO.TryGetComponent(out ITargetable highlightable))
+                                {
+                                    highlightable.WillHit(false);
+                                }
+                            }
+                        }
+
+                        highlightedObjects = tempSet;
+                    }
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        StartCoroutine(StartLobAttack(buildings.GetWorldPositionCentre(buildings.GetXYZ(hit.point + hit.normal * 0.01f)) - new Vector3(0, 0.5f, 0), selectedAttack));
+                        return;
+                    }
+
+                }
+                else if(attackType == AttackType.Melee)
+                {
+                    if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.TryGetComponent(out ITargetable targetable))
+                    {
+                        Vector3Int v = targetable.GetLocation().coords - currentTurnTaker.coords;
+
+                        if(Mathf.Abs(v.x) <= selectedAttack.maxRange &&  Mathf.Abs(v.y) <= selectedAttack.maxRange && Mathf.Abs(v.z) <= selectedAttack.maxRange)
+                        {
+                            StartCoroutine(StartMeleeAttack(targetable.GetGameObject(), selectedAttack));
+                        }
+                        
+                    }
                 }
 
             }
@@ -214,14 +291,25 @@ public class CombatController : MonoBehaviour
         }
     }
 
-    HitSpot GetLowestPen(DirectAimData target, GameObject targetGO)
+    HitSpot GetLowestPen(DirectAimData target, GameObject targetGO, Vector3Int? prelimCoords = null)
     {
+        Vector3 coords; 
+        if(prelimCoords == null)
+        {
+            coords = currentTurnTaker.coords;
+        }
+        else
+        {
+            coords = prelimCoords.Value;
+        }
+
+
         HitSpot bestHitSpot = target.allHittableSpots[0];
         int minPierce = int.MaxValue;
         foreach (HitSpot hitspot in target.allHittableSpots)
         {
-            Vector3 SourceToTarget = hitspot.transform.position - buildings.GetWorldPositionCentre(currentTurnTaker.coords);
-            Ray toTarget = new Ray(buildings.GetWorldPositionCentre(currentTurnTaker.coords), SourceToTarget.normalized);
+            Vector3 SourceToTarget = hitspot.transform.position - buildings.GetWorldPositionCentre(coords);
+            Ray toTarget = new Ray(buildings.GetWorldPositionCentre(coords), SourceToTarget.normalized);
 
             RaycastHit[] penetrated = Physics.RaycastAll(toTarget, SourceToTarget.magnitude);
 
@@ -233,6 +321,7 @@ public class CombatController : MonoBehaviour
                     totalPierce += intercept.GetLocation().pierceNeeded;
                 }
             }
+
             hitspot.totalPierceNeeded = totalPierce;
 
             if (totalPierce < minPierce)
@@ -245,49 +334,85 @@ public class CombatController : MonoBehaviour
         return bestHitSpot;
     }
 
-    IEnumerable StartDirectAttack(DirectAimData target, HitSpot aimedSpot)
+    IEnumerator StartDirectAttack(DirectAimData target, HitSpot aimedSpot)
     {
         currentPhase = CombatPhases.Action;
-        UI.SetUI(CombatUIManager.CombatUIPhase.ActionSelect, currentTurnTaker);
+        ClearIndicators();
+        ClearHighlighted();
+        UI.SetUI(CombatUIManager.CombatUIPhase.None, currentTurnTaker);
+
         attackType = AttackType.None;
 
         yield return currentTurnTaker.DirectAttack(selectedAttack, target, aimedSpot);
 
         currentPhase = CombatPhases.Planning;
+        UI.SetUI(CombatUIManager.CombatUIPhase.ActionSelect, currentTurnTaker);
 
     }
 
-
-    IEnumerable StartMovement(Vector3Int coords)
+    IEnumerator StartMovement(Vector3Int coords)
     {
         currentPhase = CombatPhases.Action;
+        UI.SetUI(CombatUIManager.CombatUIPhase.None, currentTurnTaker);
         currentTurnTaker.SetPath(pathfinder.GetPath(currentTurnTaker.coords, coords));
         ClearIndicators();
-
+        
         yield return currentTurnTaker.Move();
+        
+        UI.SetUI(CombatUIManager.CombatUIPhase.ActionSelect, currentTurnTaker);
         currentPhase = CombatPhases.Planning;
-
-    }
-    public void StartAction()
-    {
-        ClearIndicators();
-        StartCoroutine(RunActions());
-        //currentPhase = CombatPhases.Action;
+        SetUnitPositions();
     }
 
-    IEnumerator RunActions()
+    IEnumerator StartLobAttack(Vector3 Target, AttackAbilitySO attack)
     {
         currentPhase = CombatPhases.Action;
+        Vector3[] points = arcIndicator.GetArcPoints();
+        UI.SetUI(CombatUIManager.CombatUIPhase.None, currentTurnTaker);
+        attackType = AttackType.None;
+        arcIndicator.Toggle(false);
+        ClearIndicators();
+        ClearHighlighted();
+        yield return currentTurnTaker.LobAttack(points, attack);
 
-        foreach(CombatUnit unit in turnOrder)
+        //do effect
+
+        if (attack.aoe > 0)
         {
-            yield return unit.RunActions();
+            Debug.Log("boom");
+            Collider[] colliders = Physics.OverlapSphere(Target, attack.aoe / 2);
+            Debug.Log(colliders.Length);
 
-            yield return new WaitForSeconds(0.5f);
+            Instantiate(bombFX, Target, Quaternion.identity);
+
+            foreach (Collider collider in colliders)
+            {
+                if (collider.gameObject.TryGetComponent(out ITargetable highlightable))
+                {
+                    highlightable.TakeDamage(attack.baseDamage, DamageType.Explosive, currentTurnTaker, Target);
+                }
+            }
         }
 
         currentPhase = CombatPhases.Planning;
-        SetUnitPositions();
+        UI.SetUI(CombatUIManager.CombatUIPhase.ActionSelect, currentTurnTaker);
+    }
+
+    IEnumerator StartMeleeAttack(GameObject target, AttackAbilitySO attack)
+    {
+        currentPhase = CombatPhases.Action;
+        ClearIndicators();
+        ClearHighlighted();
+        UI.SetUI(CombatUIManager.CombatUIPhase.None, currentTurnTaker);
+
+
+        yield return currentTurnTaker.MeleeAttack(target, attack);
+
+        selectedAttack = null;
+        attackType = AttackType.None;
+
+        currentPhase = CombatPhases.Planning;
+        UI.SetUI(CombatUIManager.CombatUIPhase.ActionSelect, currentTurnTaker);
     }
 
     void SetUnitPositions()
@@ -301,18 +426,23 @@ public class CombatController : MonoBehaviour
     void selectTurnTaker(CombatUnit unit)
     {
         attackType = AttackType.None;
-        UI.SetUI(CombatUIManager.CombatUIPhase.ActionSelect);
-        infoPanel.Setup(unit.GetName());
+        UI.SetUI(CombatUIManager.CombatUIPhase.ActionSelect, unit);
         currentTurnTaker = unit;
     }
 
     public void SelectMovement()
     {
+        SetUnitPositions();
+        if (currentTurnTaker.remainingMovement == 0)
+        {
+            Debug.Log("out of movement");
+            return;
+        }
         ClearIndicators();
         movableNodes = GetMovableTiles();
         foreach (PathfindingNode node in movableNodes)
         {
-            Debug.Log("placingTile :" + node.coords);
+            //Debug.Log("placingTile :" + node.coords);
             GameObject indicator = Instantiate(moveIndicatorPrefab, buildings.GetWorldPosition(node.coords), Quaternion.identity);
             indicator.GetComponent<MoveIndicatorScript>().Coords = node.coords;
             indicator.GetComponent<MoveIndicatorScript>().combatController = this;
@@ -340,18 +470,20 @@ public class CombatController : MonoBehaviour
 
     List<PathfindingNode> GetMovableTiles()
     {
-        Debug.Log("coords : " + currentTurnTaker.coords);
-        return pathfinder.NodeWithinRangeAdj(currentTurnTaker.coords, currentTurnTaker.moveRange); 
+        //Debug.Log("coords : " + currentTurnTaker.coords);
+        return pathfinder.NodeWithinRangeAdj(currentTurnTaker.coords, currentTurnTaker.remainingMovement); 
     }
 
     public void AddUnit(CombatUnit unit)
     {
         Units.Add(unit);
+        turnOrder.Add(unit);
     }
 
     void ClearIndicators()
     {
-        foreach(GameObject indicator in moveIndicators)
+        directAimIndicator.GetComponent<DirectAimIndicator>().Toggle(false);
+        foreach (GameObject indicator in moveIndicators)
         {
             Destroy(indicator);
         }
@@ -366,13 +498,23 @@ public class CombatController : MonoBehaviour
 
     void SetUpCombat()
     {
-        turnOrder.Clear();
-        foreach(CombatUnit unit in Units)
-        {
-            turnOrder.Add(unit);
-        }
-        currentTurnTaker = turnOrder[0];
+        mainCanvas.UpdateState(CanvasManager.CanvasState.Combat);
         SetUnitPositions();
+        foreach (CombatUnit unit in Units)
+        {
+            unit.TickTurn();
+        }
+
+        controllable.Clear();
+        foreach(CharacterInfo info in playerUnitsManager.selectedTeam)
+        {
+            if(info != null)
+            {
+                controllable.Add(info.gameObject.GetComponent<CombatUnit>());
+            }
+        }
+
+        UI.SetupSideBar(controllable);
     }
 
     void AimDirectAt()
@@ -382,6 +524,11 @@ public class CombatController : MonoBehaviour
 
     public void SetupAttackPanel()
     {
+        if(currentTurnTaker.actionsLeft <= 0)
+        {
+            Debug.Log("No more actions");
+            return;
+        }
         Debug.Log("attack selected");
         UI.SetUI(CombatUIManager.CombatUIPhase.AttackSelect, currentTurnTaker);
     }
@@ -401,6 +548,10 @@ public class CombatController : MonoBehaviour
     {
         foreach (GameObject GO in highlightedObjects)
         {
+            if(GO == null)
+            {
+                continue;
+            }
             if (GO.TryGetComponent(out ITargetable highlightable))
             {
                 highlightable.WillHit(false);
@@ -409,4 +560,157 @@ public class CombatController : MonoBehaviour
 
         highlightedObjects = new HashSet<GameObject>();
     }
+
+    public void EndTurn()
+    {
+        currentPhase = CombatPhases.Sim;
+        UI.SetUI(CombatUIManager.CombatUIPhase.None);
+        StartCoroutine(SimNPCs());
+
+    }
+
+    IEnumerator SimNPCs()
+    {
+        Debug.Log("sim started");
+        yield return new WaitForSeconds(2);
+       
+        foreach(CombatUnit unit in turnOrder)
+        {
+            if(unit == null || unit.dead)
+            {
+                continue;
+            }
+            if (IsControllableUnit(unit) == false)
+            {
+                currentTurnTaker = unit;
+                yield return CalculateAction();
+                Debug.Log("sim " + unit.name + " done");
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        
+
+        Debug.Log("sim done");
+        ResetUnits();
+        currentPhase = CombatPhases.Planning;
+    }
+
+    bool IsControllableUnit(CombatUnit checkUnit)
+    {
+        foreach (CombatUnit unit in controllable)
+        {
+            if (unit == checkUnit)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    
+    IEnumerator CalculateAction()
+    {
+        List<PathfindingNode> movable = GetMovableTiles();
+
+        List<CombatUnit> hostiles = new List<CombatUnit>();
+
+        foreach(CombatUnit unit in Units)
+        {
+            if(teamManager.CheckRelations(currentTurnTaker.stats, unit.stats) == RelationState.Agro)
+            {
+                hostiles.Add(unit);
+            }
+        }
+
+
+        List<SimAction> possibleActions = new List<SimAction>();
+
+        foreach (PathfindingNode tile in movable)
+        {
+            foreach (CombatUnit unit in hostiles)
+            {
+                if (unit.dead)
+                {
+                    continue;
+                }
+                DirectAimData aimData = unit.GetLocation();
+                HitSpot hitSpot = GetLowestPen(aimData, unit.gameObject, tile.coords);
+
+                if (hitSpot.totalPierceNeeded < 2)
+                {
+                    possibleActions.Add(new SimAction(hitSpot, aimData, tile.coords));
+
+                }
+                
+            }
+        }
+
+        Debug.Log("actions found : " + possibleActions.Count());
+        if(possibleActions.Count() > 0)
+        {
+            yield return StartMovement(possibleActions[0].movePoint);
+            Debug.Log(possibleActions[0].movePoint);
+            Debug.Log("pierce needed : " + possibleActions[0].hitSpot.totalPierceNeeded);
+            yield return StartDirectAttack(possibleActions[0].aimData, possibleActions[0].hitSpot);
+        }
+    }
+    
+
+    void ResetUnits()
+    {
+        foreach(CombatUnit unit in Units)
+        {
+            unit.TickTurn();
+        }
+    }
+
+    bool IsControllable(CombatUnit unit)
+    {
+        foreach(CombatUnit u in controllable)
+        {
+            if(u == unit)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void UnitDie(CombatUnit unit)
+    {
+        Units.Remove(unit);
+        turnOrder.Remove(unit);
+
+
+    }
+
+    public void UpdateUnitHP(CombatUnit unit, float newHP)
+    {
+        for(int i = 0; i < controllable.Count; i++)
+        {
+            if (controllable[i] == unit)
+            {
+                UI.UpdateSidebarHP(i, newHP);
+            }
+        }
+    }
 }
+
+public class SimAction
+{
+    public float quality;
+    public HitSpot hitSpot;
+    public DirectAimData aimData;
+    public Vector3Int movePoint; 
+
+    public SimAction(HitSpot hitSpot, DirectAimData aimData, Vector3Int movePoint)
+    {
+        this.hitSpot = hitSpot;
+        this.aimData = aimData;
+        this.movePoint = movePoint;
+    }
+
+}
+

@@ -16,7 +16,8 @@ public enum HitVital
     instakill,
     vital,
     normal,
-    nonvital
+    nonvital,
+    miss
 }
 
 [System.Serializable]

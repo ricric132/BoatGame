@@ -378,6 +378,9 @@ MonoBehaviour:
     coords: {x: 0, y: 0, z: 0}
     pierceNeeded: 1
   pierceRequired: 1
+  buildingSectionSO: {fileID: 0}
+  visualSections:
+  - {fileID: 5213696525946971180}
 --- !u!65 &8219318871839547674
 BoxCollider:
   m_ObjectHideFlags: 0

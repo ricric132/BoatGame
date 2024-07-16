@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3852252219677174884}
   - component: {fileID: 8848796049546457418}
   m_Layer: 8
-  m_Name: Scripts
+  m_Name: BuildingsMasterScripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

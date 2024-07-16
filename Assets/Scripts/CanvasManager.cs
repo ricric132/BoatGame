@@ -11,6 +11,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject buildingTabs;
     [SerializeField] GameObject defaultTabs;
     [SerializeField] GameObject buildingInfoTab;
+    [SerializeField] GameObject unitManagerTab;
+    [SerializeField] GameObject combatUI;
     [SerializeField] BuildingInfoPanel buildingInfoPanelSetup;
     [SerializeField] Camera cam;
 
@@ -18,6 +20,8 @@ public class CanvasManager : MonoBehaviour
     //CanvasState[] currentState;
     AssignableBuildings selectedBuilding;
     [SerializeField] GameObject gridIndicator;
+
+    [SerializeField] GameObject ESCPopup;
     
 
     
@@ -25,7 +29,9 @@ public class CanvasManager : MonoBehaviour
         None,
         CityManagement,
         ResourcesTab,
-        BuildingMode
+        BuildingMode,
+        UnitManager,
+        Combat
     }
     // Start is called before the first frame update
     void Start()
@@ -42,6 +48,10 @@ public class CanvasManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.G)){
             ToggleBuildingTab();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            ToggleEscapeWindow();
         }
 
         if(Input.GetKeyDown(KeyCode.Mouse0)){
@@ -84,7 +94,6 @@ public class CanvasManager : MonoBehaviour
             UpdateState(CanvasState.ResourcesTab);
         }
     }
-
     public void ToggleBuildingTab(){
         if(buildingTabs.activeSelf){
             UpdateState(CanvasState.CityManagement);
@@ -94,13 +103,33 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    void UpdateState(CanvasState newState){
+    public void ToggleUnitManagerTab()
+    {
+        if (unitManagerTab.activeSelf)
+        {
+            UpdateState(CanvasState.CityManagement);
+        }
+        else
+        {
+            UpdateState(CanvasState.UnitManager);
+        }
+    }
+
+    public void ToggleEscapeWindow()
+    {
+        ESCPopup.SetActive(!ESCPopup.activeSelf);
+    }
+
+    public void UpdateState(CanvasState newState){
         currentState = newState;
 
+        //defaultTabs.SetActive(false);
         resourcesTab.SetActive(false);
         buildingTabs.SetActive(false);
-        defaultTabs.SetActive(false);
         gridIndicator.SetActive(false);
+        unitManagerTab.SetActive(false);
+        combatUI.SetActive(false);
+        defaultTabs.SetActive(false);
 
         switch(currentState){
             case CanvasState.None:
@@ -110,12 +139,21 @@ public class CanvasManager : MonoBehaviour
                 break;
             case CanvasState.ResourcesTab:
                 resourcesTab.SetActive(true);
-                
+                defaultTabs.SetActive(true);
                 break;
             case CanvasState.BuildingMode:
                 buildingTabs.SetActive(true);
                 gridIndicator.SetActive(true);
+                defaultTabs.SetActive(true);
                 break;
+            case CanvasState.UnitManager:
+                unitManagerTab.SetActive(true);
+                defaultTabs.SetActive(true);
+                break;
+            case CanvasState.Combat:
+                combatUI.SetActive(true);
+                break;
+
         }
 
     }

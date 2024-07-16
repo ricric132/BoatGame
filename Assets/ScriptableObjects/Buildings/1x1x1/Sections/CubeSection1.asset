@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: CubeSection1
   m_EditorClassIdentifier: 
   prefab: {fileID: 1434637445201457590, guid: 252c49e4febda6a49a2f9b732328d3bc, type: 3}
-  wholeBuild: {fileID: 0}
+  masterScripts: {fileID: 0}
   walkableDirs: []
   x: 0
   y: 0
   z: 0
+  saveID: 0
+  displayName: Wood
+  maxHp: 10

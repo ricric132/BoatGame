@@ -17,6 +17,15 @@ MonoBehaviour:
   x: 1
   y: 1
   z: 1
+  sections:
+    arr3D:
+    - arr2D:
+      - arr1D:
+        - data: {fileID: 11400000, guid: bfd82ef8c83e6df43a3e4e17c8c478c1, type: 2}
+        size: 0
+    x: 0
+    y: 0
+    z: 0
   buildingResources:
     keys:
     - {fileID: 11400000, guid: 1ff707e5a15bcd44fa5c6bfb3e2c9cc0, type: 2}
@@ -29,3 +38,8 @@ MonoBehaviour:
     - {x: 1, y: 1, z: 0}
     - {x: -1, y: -1, z: 0}
   walkableLevels: 00000000
+  buildingName: 
+  buildingDescription: 
+  icon: {fileID: 0}
+  ID: 2
+  scriptInstancePrefab: {fileID: 1434637445201457590, guid: 5aeaec424b598534cbb8c62d4673f1b8, type: 3}

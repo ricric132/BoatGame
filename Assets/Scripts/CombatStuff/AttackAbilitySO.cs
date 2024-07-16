@@ -9,10 +9,15 @@ public class AttackAbilitySO : ScriptableObject
     public CombatController.AttackType attackType;
 
     public int baseDamage;
+    public CombatController.DamageType damageType;
     
     public int minRange;
     public int maxRange;
 
-    public int weight;  
+    public int weight;
+
+    public float aoe;
+
+  
 
 }

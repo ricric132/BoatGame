@@ -13,6 +13,7 @@ public class BuildingSectionSO : ScriptableObject
     public int y;
     public int z;
     public int saveID;
-
+    public string displayName;
+    public int maxHp;
 }
 

@@ -17,6 +17,10 @@ public class BuildingSectionScript : MonoBehaviour, ITargetable
 
     public int pierceRequired;
 
+    public BuildingSectionSO buildingSectionSO;
+
+    public List<MeshRenderer> visualSections;
+
 
     public DirectAimData GetLocation()
     {
@@ -26,13 +30,42 @@ public class BuildingSectionScript : MonoBehaviour, ITargetable
 
     public void WillHit(bool hit)
     {
-        if(hit)
+        foreach(MeshRenderer mesh in visualSections)
         {
-            visual.material = hitIndicatorMaterial;
+            if(hit)
+            {
+                mesh.material = hitIndicatorMaterial;
+            }
+            else
+            {
+                mesh.material = baseMaterial;
+            }
         }
-        else
+
+    }
+
+    public void TakeDamage(int damage, CombatController.DamageType damageType, CombatUnit attacker, Vector3 impactPoint = default(Vector3))
+    {
+        HP -= damage;
+        if (HP <= 0)
         {
-            visual.material = baseMaterial;
+            Destroy(gameObject);
         }
+    }
+
+    public void SetHP(int maxHP)
+    {
+        this.maxHP = maxHP;
+        HP = maxHP;
+    }
+
+    public HoverPopupInfo GetHoverPopupInfo()
+    {
+        return new HoverPopupInfo(buildingSectionSO.displayName, maxHP, HP);
+    }
+
+    public GameObject GetGameObject() 
+    { 
+        return gameObject; 
     }
 }

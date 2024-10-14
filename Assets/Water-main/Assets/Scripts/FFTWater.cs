@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class FFTWater : MonoBehaviour {
+    public List<GameObject> waterPlanes; 
     public Shader waterShader;
     public ComputeShader fftComputeShader;
 
@@ -270,8 +271,8 @@ public class FFTWater : MonoBehaviour {
         return buoyancyDataTex;
     }
 
-    private void CreateWaterPlane() {
-        GetComponent<MeshFilter>().mesh = mesh = new Mesh();
+    private void CreateWaterPlane(GameObject obj) {
+        obj.GetComponent<MeshFilter>().mesh = mesh = new Mesh();
         mesh.name = "Water";
         mesh.indexFormat = IndexFormat.UInt32;
 
@@ -318,9 +319,12 @@ public class FFTWater : MonoBehaviour {
 
         waterMaterial = new Material(waterShader);
 
-        MeshRenderer renderer = GetComponent<MeshRenderer>();
+        foreach(GameObject obj in waterPlanes)
+        {
+            MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
 
-        renderer.material = waterMaterial;
+            renderer.material = waterMaterial;
+        }
     }
 
     void SetFFTUniforms() {
@@ -416,7 +420,12 @@ public class FFTWater : MonoBehaviour {
 
 
     void OnEnable() {
-        CreateWaterPlane();
+        foreach(GameObject obj in waterPlanes)
+        {
+            //Debug.Log(obj.name);
+            CreateWaterPlane(obj);
+        }
+        
         CreateMaterial();
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
 

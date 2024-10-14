@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b294cbe5924d0934ca94c2c1ba97f3fa, type: 3}
+  m_Name: DirtWFC
+  m_EditorClassIdentifier: 
+  weight: 20
+  upAllowed:
+  - {fileID: 11400000, guid: 4ed3a65c710ed5a44bce396a2cf53f84, type: 2}
+  - {fileID: 11400000, guid: c1c8b4700decbcf488600a37ec131851, type: 2}
+  - {fileID: 11400000, guid: 604cb421c8b72a84c81ee5eb5ad9b13c, type: 2}
+  downAllowed:
+  - {fileID: 11400000, guid: 61f7dd9794a893b489d339cf277c82f1, type: 2}
+  leftAllowed:
+  - {fileID: 11400000, guid: 14437c0ab53fc9c419c3334c94aa0f52, type: 2}
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 61f7dd9794a893b489d339cf277c82f1, type: 2}
+  - {fileID: 11400000, guid: 4ed3a65c710ed5a44bce396a2cf53f84, type: 2}
+  - {fileID: 11400000, guid: 604cb421c8b72a84c81ee5eb5ad9b13c, type: 2}
+  rightAllowed:
+  - {fileID: 11400000, guid: 14437c0ab53fc9c419c3334c94aa0f52, type: 2}
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 61f7dd9794a893b489d339cf277c82f1, type: 2}
+  - {fileID: 11400000, guid: 4ed3a65c710ed5a44bce396a2cf53f84, type: 2}
+  - {fileID: 11400000, guid: 604cb421c8b72a84c81ee5eb5ad9b13c, type: 2}
+  frontAllowed:
+  - {fileID: 11400000, guid: 14437c0ab53fc9c419c3334c94aa0f52, type: 2}
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 61f7dd9794a893b489d339cf277c82f1, type: 2}
+  - {fileID: 11400000, guid: 4ed3a65c710ed5a44bce396a2cf53f84, type: 2}
+  - {fileID: 11400000, guid: 604cb421c8b72a84c81ee5eb5ad9b13c, type: 2}
+  backAllowed:
+  - {fileID: 11400000, guid: 14437c0ab53fc9c419c3334c94aa0f52, type: 2}
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 61f7dd9794a893b489d339cf277c82f1, type: 2}
+  - {fileID: 11400000, guid: 4ed3a65c710ed5a44bce396a2cf53f84, type: 2}
+  - {fileID: 11400000, guid: 604cb421c8b72a84c81ee5eb5ad9b13c, type: 2}
+  biases:
+    keys:
+    - {fileID: 11400000}
+    values: c8000000
+  buildingObject: {fileID: 11400000, guid: 29e75dde21a0f0c489c5ebc4d3a7d116, type: 2}

@@ -7,8 +7,8 @@ public class TeamManager : MonoBehaviour
 {
     public List<Team> allTeams;
 
-    [SerializeField] List<CharacterInfo> testTeam1;
-    [SerializeField] List<CharacterInfo> testTeam2;
+    public  List<CharacterInfo> testTeam1;
+    public  List<CharacterInfo> testTeam2;
 
     // Start is called before the first frame update
     void Start()

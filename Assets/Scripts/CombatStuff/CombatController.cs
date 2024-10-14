@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -10,7 +9,8 @@ public class CombatController : MonoBehaviour
 {
     List<CombatUnit> turnOrder = new List<CombatUnit>();
     HashSet<CombatUnit> Units = new HashSet<CombatUnit>();
-    
+    public List<CombatUnit> enemyUnits;
+
     List<CombatUnit> controllable = new List<CombatUnit>();
     
 
@@ -27,7 +27,7 @@ public class CombatController : MonoBehaviour
 
     [SerializeField] Camera cam;
 
-    bool started = false;
+    public bool started = false;
 
     public CombatPhases currentPhase = CombatPhases.Planning;
 
@@ -50,7 +50,23 @@ public class CombatController : MonoBehaviour
 
     [SerializeField] PlayerUnitsManager playerUnitsManager;
 
+    [SerializeField] PlayerResources playerResources;
+    [SerializeField] ResourceSO wood;
+
     [SerializeField] GameObject bombFX;
+
+    List<Grid> gridsInvolved;
+    [SerializeField] float involvementRange;
+
+    [SerializeField] CameraController cameraController;
+
+    [SerializeField] GameObject testIndicator;
+
+    public HashSet<NPCBoat> outOfCombat;
+    NPCBoat currentEngagedBoat;
+
+    TutorialGuy tutorial;
+
 
     public enum CombatPhases
     {
@@ -81,12 +97,13 @@ public class CombatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        tutorial = FindObjectOfType<TutorialGuy>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (currentTurnTaker == null)
         {
             UI.SetUI(CombatUIManager.CombatUIPhase.None);
@@ -109,6 +126,8 @@ public class CombatController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100f) && UITest.IsPointerOverUIElement() == false)
             {
+                testIndicator.transform.position = hit.point;
+
                 if (moveIndicators.Contains(hit.collider.gameObject))
                 {
                     hit.collider.gameObject.GetComponent<MoveIndicatorScript>().hovered = true;
@@ -133,7 +152,7 @@ public class CombatController : MonoBehaviour
                     {
                         CombatUnit unit;
                         if (hit.collider.gameObject.TryGetComponent<CombatUnit>(out unit))
-                        {
+                        { 
                             if (Units.Contains(unit) && !unit.dead)
                             {
                                 if (IsControllable(unit))
@@ -174,10 +193,10 @@ public class CombatController : MonoBehaviour
                             return;
                         }
 
-                        directAimIndicator.GetComponent<DirectAimIndicator>().SetLocation(buildings.GetWorldPositionCentre(currentTurnTaker.coords), buildings.GetWorldPosition(aimData.coords), hitSpot);
+                        directAimIndicator.GetComponent<DirectAimIndicator>().SetLocation(gridManager.GetWorldPositionCentre(currentTurnTaker.coords, gridManager.combatGrid.wholeGrid), gridManager.GetWorldPosition(aimData.coords, gridManager.combatGrid.wholeGrid), hitSpot);
 
-                        Vector3 SourceToTarget = hitSpot.transform.position - buildings.GetWorldPositionCentre(currentTurnTaker.coords);
-                        Ray toTarget = new Ray(buildings.GetWorldPositionCentre(currentTurnTaker.coords), SourceToTarget.normalized);
+                        Vector3 SourceToTarget = hitSpot.transform.position - gridManager.GetWorldPositionCentre(currentTurnTaker.coords, gridManager.combatGrid.wholeGrid);
+                        Ray toTarget = new Ray(gridManager.GetWorldPositionCentre(currentTurnTaker.coords, gridManager.combatGrid.wholeGrid), SourceToTarget.normalized);
 
                         HashSet<GameObject> tempSet = new HashSet<GameObject>();
                         RaycastHit[] penetrated = Physics.RaycastAll(toTarget, SourceToTarget.magnitude);
@@ -215,11 +234,11 @@ public class CombatController : MonoBehaviour
                 else if (attackType == AttackType.Lob)
                 {
                     arcIndicator.Toggle(true);
-                    arcIndicator.SetUp(currentTurnTaker.gameObject.transform.position, buildings.GetWorldPositionCentre(buildings.GetXYZ(hit.point + hit.normal * 0.01f)) - new Vector3(0, 0.5f, 0), currentTurnTaker.stats.STR, selectedAttack.weight, selectedAttack.aoe);
+                    arcIndicator.SetUp(currentTurnTaker.gameObject.transform.position, gridManager.GetWorldPositionCentre(gridManager.GetXYZ(hit.point + hit.normal * 0.01f, gridManager.combatGrid.wholeGrid), gridManager.combatGrid.wholeGrid) - new Vector3(0, 0.5f, 0), currentTurnTaker.stats.STR, selectedAttack.weight, selectedAttack.aoe);
 
                     if(selectedAttack.aoe > 0)
                     {
-                        Collider[] colliders = Physics.OverlapSphere(buildings.GetWorldPositionCentre(buildings.GetXYZ(hit.point + hit.normal * 0.01f)) - new Vector3(0, 0.5f, 0), selectedAttack.aoe/2);
+                        Collider[] colliders = Physics.OverlapSphere(gridManager.GetWorldPositionCentre(gridManager.GetXYZ(hit.point + hit.normal * 0.01f, gridManager.combatGrid.wholeGrid), gridManager.combatGrid.wholeGrid) - new Vector3(0, 0.5f, 0), selectedAttack.aoe/2);
                         HashSet<GameObject> tempSet = new HashSet<GameObject>();
                         foreach (Collider collider in colliders)
                         {
@@ -253,7 +272,7 @@ public class CombatController : MonoBehaviour
 
                     if (Input.GetMouseButtonDown(0))
                     {
-                        StartCoroutine(StartLobAttack(buildings.GetWorldPositionCentre(buildings.GetXYZ(hit.point + hit.normal * 0.01f)) - new Vector3(0, 0.5f, 0), selectedAttack));
+                        StartCoroutine(StartLobAttack(gridManager.GetWorldPositionCentre(gridManager.GetXYZ(hit.point + hit.normal * 0.01f, gridManager.combatGrid.wholeGrid), gridManager.combatGrid.wholeGrid) - new Vector3(0, 0.5f, 0), selectedAttack));
                         return;
                     }
 
@@ -279,14 +298,6 @@ public class CombatController : MonoBehaviour
                 arcIndicator.Toggle(false);
                 ClearHighlighted();
             }
-            if (Input.GetKeyUp(KeyCode.T))
-            {
-                if (!started)
-                {
-                    SetUpCombat();
-                    started = true;
-                }
-            }
 
         }
     }
@@ -308,8 +319,8 @@ public class CombatController : MonoBehaviour
         int minPierce = int.MaxValue;
         foreach (HitSpot hitspot in target.allHittableSpots)
         {
-            Vector3 SourceToTarget = hitspot.transform.position - buildings.GetWorldPositionCentre(coords);
-            Ray toTarget = new Ray(buildings.GetWorldPositionCentre(coords), SourceToTarget.normalized);
+            Vector3 SourceToTarget = hitspot.transform.position - gridManager.GetWorldPositionCentre(coords, gridManager.combatGrid.wholeGrid);
+            Ray toTarget = new Ray(gridManager.GetWorldPositionCentre(coords, gridManager.combatGrid.wholeGrid), SourceToTarget.normalized);
 
             RaycastHit[] penetrated = Physics.RaycastAll(toTarget, SourceToTarget.magnitude);
 
@@ -336,6 +347,7 @@ public class CombatController : MonoBehaviour
 
     IEnumerator StartDirectAttack(DirectAimData target, HitSpot aimedSpot)
     {
+        tutorial.Complete(4);
         currentPhase = CombatPhases.Action;
         ClearIndicators();
         ClearHighlighted();
@@ -352,9 +364,11 @@ public class CombatController : MonoBehaviour
 
     IEnumerator StartMovement(Vector3Int coords)
     {
+        tutorial.Complete(4);
+
         currentPhase = CombatPhases.Action;
         UI.SetUI(CombatUIManager.CombatUIPhase.None, currentTurnTaker);
-        currentTurnTaker.SetPath(pathfinder.GetPath(currentTurnTaker.coords, coords));
+        currentTurnTaker.SetPath(pathfinder.GetPath(currentTurnTaker.coords, coords, gridManager.combatGrid.wholeGrid));
         ClearIndicators();
         
         yield return currentTurnTaker.Move();
@@ -366,6 +380,8 @@ public class CombatController : MonoBehaviour
 
     IEnumerator StartLobAttack(Vector3 Target, AttackAbilitySO attack)
     {
+        tutorial.Complete(4);
+
         currentPhase = CombatPhases.Action;
         Vector3[] points = arcIndicator.GetArcPoints();
         UI.SetUI(CombatUIManager.CombatUIPhase.None, currentTurnTaker);
@@ -400,6 +416,8 @@ public class CombatController : MonoBehaviour
 
     IEnumerator StartMeleeAttack(GameObject target, AttackAbilitySO attack)
     {
+        tutorial.Complete(4);
+
         currentPhase = CombatPhases.Action;
         ClearIndicators();
         ClearHighlighted();
@@ -413,6 +431,75 @@ public class CombatController : MonoBehaviour
 
         currentPhase = CombatPhases.Planning;
         UI.SetUI(CombatUIManager.CombatUIPhase.ActionSelect, currentTurnTaker);
+    }
+
+    public void CheckBattleEnd()
+    {
+        bool enemyAlive = false;
+        foreach(CombatUnit unit in enemyUnits)
+        {
+            if (!unit.dead)
+            {
+                Debug.Log("enemies: " + enemyUnits.Count);
+                enemyAlive = true;
+                break;
+            }
+        }
+
+        if(!enemyAlive) 
+        {
+            WinBattle();
+            return;
+        } 
+
+        bool allyAlive = false;
+        foreach (CharacterInfo unit in playerUnitsManager.allUnits)
+        {
+            if (!unit.combat.dead)
+            {
+                allyAlive = true;
+                break;
+            }
+        }
+
+        if (!allyAlive)
+        {
+            LoseBattle();
+        }
+    }
+
+    void LoseBattle()
+    {
+        mainCanvas.DisplayLosePopup();
+    }
+
+    void WinBattle()
+    {
+        tutorial.Complete(5);
+        started = false;
+
+        cameraController.SetCameraState(CameraController.CameraState.freeMove);
+
+        mainCanvas.UpdateState(CanvasManager.CanvasState.CityManagement);
+
+        Destroy(currentEngagedBoat.gameObject);
+
+        gridManager.DecomposeGrid(gridManager.combatGrid);
+
+        int random = Random.Range(5, 10);
+
+        mainCanvas.DisplayWinPopup(random);
+        playerResources.ChangeResourceAmount(wood, random);
+
+        List<Vector3> resetPos = gridManager.GetRandomWalkableCoords(playerUnitsManager.allUnits.Count, buildings.boatGrid);
+
+        for(int i = 0; i < playerUnitsManager.allUnits.Count; i++)
+        {
+            playerUnitsManager.allUnits[i].transform.position = gridManager.GetWorldPositionCentre(resetPos[i], buildings.boatGrid);
+        }
+
+
+        Debug.Log("end");
     }
 
     void SetUnitPositions()
@@ -440,10 +527,11 @@ public class CombatController : MonoBehaviour
         }
         ClearIndicators();
         movableNodes = GetMovableTiles();
+        Debug.Log("movable nodes: " + movableNodes.Count);
         foreach (PathfindingNode node in movableNodes)
         {
             //Debug.Log("placingTile :" + node.coords);
-            GameObject indicator = Instantiate(moveIndicatorPrefab, buildings.GetWorldPosition(node.coords), Quaternion.identity);
+            GameObject indicator = Instantiate(moveIndicatorPrefab, gridManager.GetWorldPosition(node.coords, gridManager.combatGrid.wholeGrid), Quaternion.identity);
             indicator.GetComponent<MoveIndicatorScript>().Coords = node.coords;
             indicator.GetComponent<MoveIndicatorScript>().combatController = this;
             moveIndicators.Add(indicator);
@@ -471,7 +559,7 @@ public class CombatController : MonoBehaviour
     List<PathfindingNode> GetMovableTiles()
     {
         //Debug.Log("coords : " + currentTurnTaker.coords);
-        return pathfinder.NodeWithinRangeAdj(currentTurnTaker.coords, currentTurnTaker.remainingMovement); 
+        return pathfinder.NodeWithinRangeAdj(currentTurnTaker.coords, currentTurnTaker.remainingMovement, gridManager.combatGrid.wholeGrid); 
     }
 
     public void AddUnit(CombatUnit unit)
@@ -496,9 +584,34 @@ public class CombatController : MonoBehaviour
         attackIndicators.Clear();
     }
 
-    void SetUpCombat()
+    public void SetUpCombat(List<Grid> gridsInvolved, NPCBoat boat)
     {
+        started = true;
+        currentEngagedBoat = boat;
+
+        cameraController.SetCameraState(CameraController.CameraState.freeMove);
+        gridsInvolved.Add(buildings.boatGrid);
+        gridManager.SetCombatGrid(gridsInvolved);
+
         mainCanvas.UpdateState(CanvasManager.CanvasState.Combat);
+
+        //yield return LinkShips(gridManager.combatGrid.componentGrids);
+
+        Units.Clear();
+        foreach(CharacterInfo character in boat.boatMembers)
+        {
+            Units.Add(character.combat);
+            turnOrder.Add(character.combat);
+            enemyUnits.Add(character.combat);
+            Debug.Log("add: " + enemyUnits.Count);
+        }
+
+        foreach(CharacterInfo character in playerUnitsManager.allUnits)
+        {
+            Units.Add(character.combat);
+            turnOrder.Add(character.combat);
+        }
+
         SetUnitPositions();
         foreach (CombatUnit unit in Units)
         {
@@ -516,11 +629,18 @@ public class CombatController : MonoBehaviour
 
         UI.SetupSideBar(controllable);
     }
-
-    void AimDirectAt()
+    /*
+    public IEnumerator LinkShips(Dictionary<Grid, StitchData> grids)
     {
-        
+        foreach(var grid in grids)
+        {
+            if(grid.Key != buildings.boatGrid)
+            {
+
+            }
+        }
     }
+    */
 
     public void SetupAttackPanel()
     {
@@ -576,15 +696,19 @@ public class CombatController : MonoBehaviour
        
         foreach(CombatUnit unit in turnOrder)
         {
+            
             if(unit == null || unit.dead)
             {
                 continue;
             }
+
+            Debug.Log(unit.gameObject.name);
+
             if (IsControllableUnit(unit) == false)
             {
                 currentTurnTaker = unit;
                 yield return CalculateAction();
-                Debug.Log("sim " + unit.name + " done");
+                //Debug.Log("sim " + unit.name + " done");
                 yield return new WaitForEndOfFrame();
             }
         }
@@ -592,6 +716,8 @@ public class CombatController : MonoBehaviour
 
         Debug.Log("sim done");
         ResetUnits();
+        currentTurnTaker = null;
+        selectedAttack = null;
         currentPhase = CombatPhases.Planning;
     }
 
@@ -642,7 +768,6 @@ public class CombatController : MonoBehaviour
                     possibleActions.Add(new SimAction(hitSpot, aimData, tile.coords));
 
                 }
-                
             }
         }
 
@@ -682,8 +807,6 @@ public class CombatController : MonoBehaviour
     {
         Units.Remove(unit);
         turnOrder.Remove(unit);
-
-
     }
 
     public void UpdateUnitHP(CombatUnit unit, float newHP)

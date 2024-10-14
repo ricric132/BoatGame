@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 [System.Serializable]
@@ -18,7 +17,7 @@ public class Serializable3DArray<T>
         this.y = y;
         this.z = z;
         arr3D = new Serializable2DArray<T>[z];
-        for (int i = 0; i < y; i++)
+        for (int i = 0; i < z; i++)
         {
             arr3D[i] = new Serializable2DArray<T>(x,y);
         }
@@ -32,6 +31,30 @@ public class Serializable3DArray<T>
     public void UpdateValue(int x, int y, int z, T val)
     {
         arr3D[z].UpdateValue(x, y, val);
+    }
+
+    public bool Equals(Serializable3DArray<T> comp)
+    {
+        if (x != comp.x || y != comp.y || z != comp.z)
+        {
+            return false;
+        }
+
+        for (int curX = 0; curX < x; curX++)
+        {
+            for (int curY = 0; curY < y; curY++)
+            {
+                for (int curZ = 0; curZ < z; curZ++)
+                {
+                    if (!comp.GetValue(curX, curY, curZ).Equals(GetValue(curX, curY, curZ)))
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
     }
 }
 

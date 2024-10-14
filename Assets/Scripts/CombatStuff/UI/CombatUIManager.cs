@@ -23,13 +23,13 @@ public class CombatUIManager : MonoBehaviour
     {
         if(phase == CombatUIPhase.None)
         {
-            gameObject.SetActive(true);
+            //gameObject.SetActive(true);
             ActionSelect.SetActive(false);
             AttackSelect.SetActive(false);
         }
 
         if(phase == CombatUIPhase.ActionSelect) { 
-            gameObject.SetActive(true);
+            //gameObject.SetActive(true);
             ActionSelect.SetActive(true);
             AttackSelect.SetActive(false);
             if(unit != null)
@@ -40,7 +40,7 @@ public class CombatUIManager : MonoBehaviour
 
         if (phase == CombatUIPhase.AttackSelect)
         {
-            gameObject.SetActive(true);
+            //gameObject.SetActive(true);
             ActionSelect.SetActive(false);
             AttackSelect.SetActive(true);
             if (unit != null && currentUIPhase != phase)

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b294cbe5924d0934ca94c2c1ba97f3fa, type: 3}
+  m_Name: Fountain2-1
+  m_EditorClassIdentifier: 
+  weight: 0
+  upAllowed: []
+  downAllowed: []
+  leftAllowed: []
+  rightAllowed: []
+  frontAllowed: []
+  backAllowed:
+  - {fileID: 11400000, guid: 9b19f52d4a6e7ce43a0f5142b976686c, type: 2}
+  - {fileID: 11400000, guid: 67e81a15d211d4449933c8513cc31457, type: 2}
+  - {fileID: 11400000, guid: 14437c0ab53fc9c419c3334c94aa0f52, type: 2}
+  - {fileID: 11400000, guid: 61f7dd9794a893b489d339cf277c82f1, type: 2}
+  - {fileID: 11400000, guid: 5875f4dbd177ba04fb7f863b26c3214b, type: 2}
+  - {fileID: 11400000, guid: c1c8b4700decbcf488600a37ec131851, type: 2}
+  - {fileID: 11400000, guid: 4ed3a65c710ed5a44bce396a2cf53f84, type: 2}
+  biases:
+    keys: []
+    values: 
+  buildingObject: {fileID: 0}

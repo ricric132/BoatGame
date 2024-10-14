@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +11,9 @@ public class IndividualController : MonoBehaviour
     [SerializeField] AStarPathfinding pathfinding;
     List<PathfindingNode> path;
     [SerializeField] BuildingScript buildingScript;
+    [SerializeField] GridManager gridManager;
+
+    public Grid occupiedGrid;
     Vector3 nextWaypoint;
     int waypointNum;
 
@@ -22,9 +24,7 @@ public class IndividualController : MonoBehaviour
 
     bool HasTask = false;
 
-    public string personName;
-    public string personInfo;
-    public Image personImage;
+    public CharacterInfo info;
 
     public PeopleTaskManager personManager;
 
@@ -37,7 +37,13 @@ public class IndividualController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        personManager = FindObjectOfType<PeopleTaskManager>();
+        pathfinding = FindObjectOfType<AStarPathfinding>();
+        buildingScript = FindObjectOfType<BuildingScript>();
+        gridManager = FindObjectOfType<GridManager>();
+
         personManager.AddPersonToDict(this);
+        info = GetComponent<CharacterInfo>();   
     }
 
     // Update is called once per frame
@@ -62,7 +68,7 @@ public class IndividualController : MonoBehaviour
                     //arrived at target
                 }
                 else{
-                    nextWaypoint = buildingScript.GetWorldPositionCentre(path[waypointNum].coords);
+                    nextWaypoint = gridManager.GetWorldPositionCentre(path[waypointNum].coords, occupiedGrid);
                 }
             }
             transform.position += (nextWaypoint - transform.position).normalized * 1f * Time.deltaTime;
@@ -86,7 +92,7 @@ public class IndividualController : MonoBehaviour
 
         if (unpackPrio > selectedTask.priority)
         {
-            selectedTask = new Task(unpackPrio, TaskType.Deposit, personManager.FindStorageToStore(CheckBagTotal(), buildingScript.GetXYZ(transform.position)));
+            selectedTask = new Task(unpackPrio, TaskType.Deposit, personManager.FindStorageToStore(CheckBagTotal(), gridManager.GetXYZ(transform.position, gridManager.combatGrid.wholeGrid)));
         }
 
 
@@ -143,22 +149,22 @@ public class IndividualController : MonoBehaviour
     }
 
     public void SetPath(Vector3 Location){
-        path = pathfinding.GetPath(buildingScript.GetXYZ(transform.position), buildingScript.GetXYZ(Location));
+        path = pathfinding.GetPath(gridManager.GetXYZ(transform.position, gridManager.combatGrid.wholeGrid), gridManager.GetXYZ(Location, occupiedGrid), occupiedGrid);
         if(path == null){
             return;
         }
-        nextWaypoint = buildingScript.GetWorldPositionCentre(path[0].coords);
+        nextWaypoint = gridManager.GetWorldPositionCentre(path[0].coords, occupiedGrid);
         waypointNum = 0;
     }
 
     public void SetPath(Vector3Int Coords)
     {
-        path = pathfinding.GetPath(buildingScript.GetXYZ(transform.position), Coords);
+        path = pathfinding.GetPath(gridManager.GetXYZ(transform.position, occupiedGrid), Coords, occupiedGrid);
         if (path == null)
         {
             return;
         }
-        nextWaypoint = buildingScript.GetWorldPositionCentre(path[0].coords);
+        nextWaypoint = gridManager.GetWorldPositionCentre(path[0].coords, occupiedGrid);
         waypointNum = 0;
     }
 

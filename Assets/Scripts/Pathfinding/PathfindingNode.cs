@@ -25,6 +25,28 @@ public class PathfindingNode
         this.coords = new Vector3Int(x, y, z);
     }
 
+    public bool Equals(PathfindingNode obj)
+    {
+        if(hasFloor != obj.hasFloor)
+        {
+            return false;
+        }
+
+
+        if (!enterableSides.Equals(obj.enterableSides))
+        {
+            return false;
+        }
+
+
+        if (!walls.Equals(obj.walls))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public void UpdateNode(float newDistance, PathfindingNode prevNode)
     {
         if (rootDistance < newDistance)

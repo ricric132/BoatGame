@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa6581e5d88b574db6282cafefba48d, type: 3}
+  m_Name: EnemyBoat
+  m_EditorClassIdentifier: 
+  jsonName: EnemyBaseBoat
+  savedObjects:
+  - buildingID: 1
+    x: 0
+    y: 0
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 1
+    x: 1
+    y: 0
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 1
+    x: 2
+    y: 0
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 1
+    x: 3
+    y: 0
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 1
+    x: 4
+    y: 0
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 1
+    x: 3
+    y: 1
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 1
+    x: 2
+    y: 1
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 1
+    x: 1
+    y: 1
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  gridDimensions: {x: 20, y: 20, z: 20}

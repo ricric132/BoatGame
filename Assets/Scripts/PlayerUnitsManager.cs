@@ -11,11 +11,12 @@ public class PlayerUnitsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         selectedTeam.Add(null);
         selectedTeam.Add(null);
         selectedTeam.Add(null);
         selectedTeam.Add(null);
-
+        */
         foreach (CharacterInfo unit in allUnits)
         {
             unit.playerTeam = true;

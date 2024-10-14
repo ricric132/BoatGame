@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 
 public class CameraController : MonoBehaviour
@@ -29,10 +29,16 @@ public class CameraController : MonoBehaviour
     [SerializeField] UITest UITest;
     [SerializeField] Transform boatCentre;
     [SerializeField] Transform boat;
+    [SerializeField] CanvasManager canvasManager;
 
 
     [SerializeField] Cinemachine.CinemachineVirtualCamera freeMoveView;
     [SerializeField] Cinemachine.CinemachineVirtualCamera boatMovementView;
+    [SerializeField] GameObject compass;
+    [SerializeField] CombatController combatController;
+
+    TutorialGuy tutorial;
+
     public CameraState state;
 
 
@@ -44,6 +50,8 @@ public class CameraController : MonoBehaviour
 
 
 
+
+
     //[SerializeField] Transform boatCentre;
 
     // Start is called before the first frame update
@@ -51,6 +59,7 @@ public class CameraController : MonoBehaviour
     {
         state = CameraState.freeMove;
         SetCameraState(CameraState.freeMove);
+        tutorial = FindObjectOfType<TutorialGuy>();
     }
 
     // Update is called once per frame
@@ -102,14 +111,16 @@ public class CameraController : MonoBehaviour
 
         //lateral camera movement\
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !combatController.started)
         {
             if(state == CameraState.freeMove)
             {
+                canvasManager.ToggleBoatControl(true);
                 SetCameraState(CameraState.boatOverview);
             }
             else if (state == CameraState.boatOverview)
             {
+                canvasManager.ToggleBoatControl(false);
                 SetCameraState(CameraState.freeMove);
             }
 
@@ -135,9 +146,19 @@ public class CameraController : MonoBehaviour
                 }
             }
         }
+
+        if(state == CameraState.boatOverview) 
+        {
+            tutorial.Complete(0);
+            Vector3 pointedDir = transform.forward;
+            pointedDir.y = 0;
+
+            float angle = Vector3.Angle(Vector3.forward, pointedDir);
+            compass.transform.eulerAngles = new Vector3(0, 0, angle);
+        }
     }
 
-    void SetCameraState(CameraState _state)
+    public void SetCameraState(CameraState _state)
     {
         state = _state;
         freeMoveView.gameObject.SetActive(false);

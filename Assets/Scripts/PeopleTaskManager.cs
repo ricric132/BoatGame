@@ -52,7 +52,6 @@ public class PeopleTaskManager : MonoBehaviour
     public Dictionary<IndividualController, Task> PeopleToTasks = new Dictionary<IndividualController, Task>();
 
     public List<FishingSpotScript> allFishingSpots;
-
     public Dictionary<Vector3Int, StorageScript> allStorageSpots = new Dictionary<Vector3Int, StorageScript>();
 
     List<TaskType> taskTypeList = new List<TaskType>() { TaskType.Retrieve, TaskType.Deposit, TaskType.Operate  /*, TaskType.Toggle*/};
@@ -60,6 +59,7 @@ public class PeopleTaskManager : MonoBehaviour
     [SerializeField] Transform test1;
     [SerializeField] Transform test2;
     [SerializeField] AStarPathfinding pathfinding;
+    [SerializeField] BuildingScript buildingScript;
 
     // Start is called before the first frame update
     void Start()
@@ -152,7 +152,7 @@ public class PeopleTaskManager : MonoBehaviour
                 storagesToCheck.Add(storage.Key);
             }
         }
-        return allStorageSpots[pathfinding.FindClosest(startLocation, storagesToCheck)].gameObject;
+        return allStorageSpots[pathfinding.FindClosest(startLocation, storagesToCheck, buildingScript.boatGrid)].gameObject;
     }
 
     public void AddPersonToDict(IndividualController person)

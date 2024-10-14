@@ -6,6 +6,8 @@ TagManager:
   tags:
   - FishingSpot
   - StorageSpot
+  - GridOwner
+  - Wood
   layers:
   - Default
   - TransparentFX

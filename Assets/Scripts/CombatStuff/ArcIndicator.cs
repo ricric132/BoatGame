@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+
 
 public class ArcIndicator : MonoBehaviour
 {
@@ -196,7 +196,7 @@ public class ArcIndicator : MonoBehaviour
 
             newPos = new Vector3(horizontal.x, yPos, horizontal.z) + transform.position;
 
-            Debug.Log(newPos);
+            //Debug.Log(newPos);
             if (Physics.Linecast(prevPos, newPos, layermask))
             {
                 return true;

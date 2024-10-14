@@ -1,0 +1,8637 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa6581e5d88b574db6282cafefba48d, type: 3}
+  m_Name: PlainsVillage
+  m_EditorClassIdentifier: 
+  jsonName: ForestVillage
+  savedObjects:
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 0
+    y: 5
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 0
+    y: 5
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 0
+    y: 5
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 0
+    y: 5
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 0
+    y: 5
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 0
+    y: 5
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 0
+    y: 5
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 0
+    y: 4
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 1
+    y: 5
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 1
+    y: 5
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 1
+    y: 5
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 1
+    y: 5
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 1
+    y: 5
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 1
+    y: 5
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 1
+    y: 5
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 1
+    y: 5
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 1
+    y: 5
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 1
+    y: 4
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 2
+    y: 5
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 2
+    y: 5
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 2
+    y: 5
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 2
+    y: 5
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 2
+    y: 5
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 2
+    y: 5
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 3
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 2
+    y: 4
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 3
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 2
+    y: 4
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 3
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 2
+    y: 4
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 3
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 2
+    y: 4
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 3
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 3
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 2
+    y: 4
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 5
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 5
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 5
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 5
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 5
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 3
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 3
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 4
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 3
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 4
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 3
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 4
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 3
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 4
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 3
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 4
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 3
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 4
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 3
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 3
+    y: 4
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 3
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 3
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 3
+    y: 3
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 5
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 5
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 5
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 4
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 4
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 4
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 4
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 4
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 4
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 4
+    y: 4
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 4
+    y: 3
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 5
+    y: 6
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 5
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 5
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 5
+    y: 5
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 5
+    y: 5
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 3
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 5
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 3
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 5
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 3
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 5
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 3
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 5
+    y: 4
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 2
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 2
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 2
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 2
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 2
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 2
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 2
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 2
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 5
+    y: 2
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 6
+    y: 6
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 6
+    y: 6
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 6
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 6
+    y: 5
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 3
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 6
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 3
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 6
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 3
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 6
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 3
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 6
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 2
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 2
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 2
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 6
+    y: 2
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 6
+    y: 2
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 6
+    y: 2
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 6
+    y: 2
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 6
+    y: 2
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 6
+    y: 2
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 6
+    y: 2
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 7
+    y: 6
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 7
+    y: 6
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 7
+    y: 6
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 7
+    y: 5
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 7
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 7
+    y: 5
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 3
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 7
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 3
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 7
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 3
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 7
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 2
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 2
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 7
+    y: 2
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 7
+    y: 2
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 7
+    y: 2
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 7
+    y: 1
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 7
+    y: 1
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 7
+    y: 1
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 7
+    y: 1
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 7
+    y: 1
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 7
+    y: 1
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 8
+    y: 6
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 8
+    y: 6
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 8
+    y: 6
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 8
+    y: 6
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 8
+    y: 5
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 8
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 3
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 8
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 3
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 8
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 3
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 8
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 2
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 2
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 8
+    y: 2
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 8
+    y: 2
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 8
+    y: 1
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 8
+    y: 1
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 8
+    y: 1
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 8
+    y: 1
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 8
+    y: 1
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 8
+    y: 1
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 8
+    y: 1
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 8
+    y: 1
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 5
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 5
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 3
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 3
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 3
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 9
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 2
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 2
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 9
+    y: 2
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 9
+    y: 2
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 9
+    y: 1
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 9
+    y: 1
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 9
+    y: 1
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 9
+    y: 1
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 9
+    y: 1
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 9
+    y: 1
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 9
+    y: 1
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 9
+    y: 1
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 5
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 5
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 3
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 3
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 3
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 10
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 2
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 2
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 10
+    y: 2
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 10
+    y: 2
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 10
+    y: 1
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 10
+    y: 1
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 10
+    y: 1
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 10
+    y: 1
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 10
+    y: 1
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 10
+    y: 0
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 10
+    y: 0
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 10
+    y: 0
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 5
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 5
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 3
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 3
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 3
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 3
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 11
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 2
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 2
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 11
+    y: 2
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 11
+    y: 2
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 11
+    y: 1
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 11
+    y: 1
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 11
+    y: 1
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 11
+    y: 1
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 11
+    y: 0
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 11
+    y: 0
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 11
+    y: 0
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 5
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 5
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 3
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 3
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 3
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 3
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 3
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 12
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 2
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 2
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 12
+    y: 2
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 12
+    y: 2
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 12
+    y: 1
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 12
+    y: 1
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 12
+    y: 1
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 12
+    y: 1
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 12
+    y: 0
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 12
+    y: 0
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 3
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 3
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 3
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 3
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 3
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 5
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 5
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 5
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 5
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 3
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 3
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 3
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 3
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 13
+    y: 4
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 2
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 2
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 13
+    y: 2
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 13
+    y: 2
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 13
+    y: 1
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 13
+    y: 1
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 13
+    y: 1
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 13
+    y: 1
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 13
+    y: 0
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 3
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 14
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 3
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 14
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 3
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 14
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 3
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 14
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 3
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 14
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 14
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 14
+    y: 5
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 14
+    y: 5
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 14
+    y: 5
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 14
+    y: 5
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 3
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 14
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 3
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 3
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 3
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 2
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 14
+    y: 2
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 14
+    y: 2
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 14
+    y: 1
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 14
+    y: 1
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 14
+    y: 1
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 14
+    y: 1
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 3
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 15
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 3
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 15
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 3
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 15
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 3
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 15
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 3
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 15
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 4
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 4
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 15
+    y: 5
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 15
+    y: 5
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 4
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 3
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 3
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 3
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 15
+    y: 4
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 2
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 15
+    y: 2
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 15
+    y: 2
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 15
+    y: 2
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 15
+    y: 1
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 15
+    y: 1
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 3
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 16
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 3
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 16
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 3
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 16
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 3
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 16
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 3
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 4
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 4
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 5
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 5
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 4
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 4
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 4
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 4
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 4
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 3
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 16
+    y: 4
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 3
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 16
+    y: 4
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 3
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 16
+    y: 4
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 2
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 16
+    y: 2
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 16
+    y: 2
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 16
+    y: 1
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 3
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 17
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 3
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 17
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 3
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 17
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 3
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 4
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 4
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 5
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 5
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 5
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 5
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 17
+    y: 6
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 5
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 17
+    y: 6
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 5
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 4
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 4
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 4
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 3
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 17
+    y: 4
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 3
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 3
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 17
+    y: 4
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 2
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 17
+    y: 2
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 6
+    x: 17
+    y: 2
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 18
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 4
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 5
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 5
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 5
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 5
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 5
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 18
+    y: 6
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 5
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 18
+    y: 6
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 5
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 18
+    y: 6
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 5
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 5
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 4
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 4
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 4
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 9
+    x: 18
+    y: 5
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 3
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 3
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 18
+    y: 4
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 3
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 18
+    y: 2
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 4
+    x: 18
+    y: 2
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 4
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 5
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 5
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 5
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 6
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 6
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 6
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 19
+    y: 7
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 6
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 19
+    y: 7
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 6
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 5
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 5
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 5
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 4
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 4
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 4
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 3
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 3
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 3
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 19
+    y: 2
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 4
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 4
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 4
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 5
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 5
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 6
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 6
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 6
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 6
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 20
+    y: 7
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 6
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 20
+    y: 7
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 6
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 20
+    y: 7
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 6
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 20
+    y: 7
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 5
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 9
+    x: 20
+    y: 6
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 5
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 5
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 9
+    x: 20
+    y: 6
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 4
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 20
+    y: 5
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 4
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 20
+    y: 5
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 4
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 3
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 3
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 20
+    y: 3
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 4
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 4
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 5
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 6
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 6
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 6
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 7
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 7
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 21
+    y: 8
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 7
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 21
+    y: 8
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 7
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 21
+    y: 8
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 7
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 6
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 6
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 5
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 5
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 5
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 4
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 4
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 4
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 3
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 21
+    y: 3
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 5
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 6
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 6
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 7
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 7
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 7
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 22
+    y: 8
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 22
+    y: 9
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 22
+    y: 8
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 22
+    y: 9
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 22
+    y: 8
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 22
+    y: 9
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 22
+    y: 8
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 22
+    y: 9
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 7
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 7
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 6
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 22
+    y: 7
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 5
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 8
+    x: 22
+    y: 6
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 5
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 22
+    y: 6
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 5
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 22
+    y: 6
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 4
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 4
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 4
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 22
+    y: 3
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 6
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 6
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 7
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 7
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 23
+    y: 8
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 23
+    y: 8
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 23
+    y: 8
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 23
+    y: 9
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 23
+    y: 8
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 23
+    y: 9
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 23
+    y: 8
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 23
+    y: 9
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 23
+    y: 8
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 23
+    y: 9
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 23
+    y: 8
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 23
+    y: 9
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 7
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 23
+    y: 8
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 7
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 23
+    y: 8
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 6
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 23
+    y: 7
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 5
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 23
+    y: 6
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 5
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 23
+    y: 6
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 5
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 23
+    y: 6
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 4
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 4
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 23
+    y: 3
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 5
+    z: 0
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 5
+    z: 1
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 5
+    z: 2
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 5
+    z: 3
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 5
+    z: 4
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 6
+    z: 5
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 6
+    z: 6
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 7
+    z: 7
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 7
+    z: 8
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 24
+    y: 8
+    z: 9
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 24
+    y: 8
+    z: 10
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 24
+    y: 8
+    z: 11
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 24
+    y: 8
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 24
+    y: 9
+    z: 12
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 24
+    y: 8
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 24
+    y: 9
+    z: 13
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 24
+    y: 8
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 24
+    y: 9
+    z: 14
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 24
+    y: 8
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 24
+    y: 9
+    z: 15
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 7
+    x: 24
+    y: 8
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 24
+    y: 9
+    z: 16
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 7
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 24
+    y: 8
+    z: 17
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 7
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 24
+    y: 8
+    z: 18
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 6
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 24
+    y: 7
+    z: 19
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 5
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 24
+    y: 6
+    z: 20
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 5
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 24
+    y: 6
+    z: 21
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 5
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 11
+    x: 24
+    y: 6
+    z: 22
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 4
+    z: 23
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  - buildingID: 3
+    x: 24
+    y: 4
+    z: 24
+    rot: 0
+    sectionData:
+      arr3D: []
+      x: 0
+      y: 0
+      z: 0
+  gridDimensions: {x: 25, y: 25, z: 25}

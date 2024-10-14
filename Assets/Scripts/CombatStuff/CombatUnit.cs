@@ -6,8 +6,9 @@ using UnityEngine;
 public class CombatUnit : MonoBehaviour, ITargetable
 {
     public Vector3Int coords = new Vector3Int();
-    [SerializeField] BuildingScript buildingScript;
-    [SerializeField] CombatController combatController;
+    BuildingScript buildingScript;
+    CombatController combatController;
+    GridManager gridManager;
     List<PathfindingNode> currentPath;
     Vector3 nextWaypoint;
     int waypointNum;
@@ -43,14 +44,21 @@ public class CombatUnit : MonoBehaviour, ITargetable
     [SerializeField] Transform HpBar;
     [SerializeField] GameObject bloodSplurt;
 
+    [SerializeField] Animator animator;
+
+    bool stallForAnimation = false;
+
 
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        combatController.AddUnit(this);
-        StartCombatState();
+        buildingScript = FindObjectOfType<BuildingScript>();
+        combatController = FindObjectOfType<CombatController>();
+        gridManager = FindObjectOfType<GridManager>();
+        //combatController.AddUnit(this);
+        //StartCombatState();
         curHP = maxHP;
 
 
@@ -182,7 +190,7 @@ public class CombatUnit : MonoBehaviour, ITargetable
 
     public void StartCombatState()
     {
-        coords = buildingScript.GetXYZ(transform.position);
+        coords = gridManager.GetXYZ(transform.position, gridManager.combatGrid.wholeGrid);
     }
 
     public string GetName()
@@ -197,34 +205,80 @@ public class CombatUnit : MonoBehaviour, ITargetable
     }
 
     public IEnumerator DirectAttack(AttackAbilitySO attack, DirectAimData target, HitSpot aimedSpot)
-    {
+    { 
         actionsLeft--;
-        Debug.Log("shooting");
+
+
+
         int random = Random.Range(0, target.allHittableSpots.Count - 1);
         HitSpot spot = target.allHittableSpots[random];
         if (target != null)
         {
+            animator.SetBool("isIdol", false);
+
+            stallForAnimation = true;
+            transform.LookAt(gridManager.GetWorldPositionCentre(target.coords, gridManager.combatGrid.wholeGrid));
+            transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+
+            animator.SetTrigger("shoot");
+            while (stallForAnimation)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
             BulletScript bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<BulletScript>();
             yield return bullet.Fire(spot, gameObject);
+
+            animator.SetBool("isIdol", true);
         }
-        yield return null;
     }
 
+
+    
     public IEnumerator LobAttack(Vector3[] points, AttackAbilitySO attack)
     {
         actionsLeft--;
+        animator.SetBool("isIdol", false);
+        stallForAnimation = true;
 
+        transform.LookAt(points[points.Length-1]);
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+
+        animator.SetTrigger("throw");
+        
+
+        while (stallForAnimation)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+       
         ArcProjectile projectile = Instantiate(throwablePrefab, transform.position, Quaternion.identity).GetComponent<ArcProjectile>();
         yield return projectile.Launch(points, attack);
+        animator.SetBool("isIdol", true);
+    }
+
+    public void ResumePausedAction()
+    {
+        stallForAnimation = false;
     }
 
     public IEnumerator MeleeAttack(GameObject target,  AttackAbilitySO attack)
     {
         actionsLeft--;
+
+        
+
+        
         if (target.TryGetComponent(out ITargetable hittable))
         {
+            animator.SetBool("isIdol", false);
+            animator.SetTrigger("punch");
+            yield return new WaitForSeconds(0.5f);
             hittable.TakeDamage(attack.baseDamage, attack.damageType, this);
+            yield return new WaitForSeconds(0.5f);
+            animator.SetBool("isIdol", true);
         }
+        
         yield return null;
     }
 
@@ -236,7 +290,7 @@ public class CombatUnit : MonoBehaviour, ITargetable
         Vector3[] points = new Vector3[path.Count];
         for (int i = 0; i < path.Count; i++)
         {
-            points[i] = buildingScript.GetWorldPositionCentre(path[i].coords);
+            points[i] = gridManager.GetWorldPositionCentre(path[i].coords, gridManager.combatGrid.wholeGrid);
         }
         pathIndicator.SetVertexCount(path.Count);
         pathIndicator.SetPositions(points);
@@ -246,13 +300,14 @@ public class CombatUnit : MonoBehaviour, ITargetable
 
     public IEnumerator Move()
     {
+        animator.SetBool("isWalking", true);
         while (currentPath != null)
         {
             Vector3[] points = new Vector3[currentPath.Count - waypointNum + 1];
             points[0] = transform.position;
             for (int i = 0; i < currentPath.Count - waypointNum; i++)
             {
-                points[i + 1] = buildingScript.GetWorldPositionCentre(currentPath[i + waypointNum].coords);
+                points[i + 1] = gridManager.GetWorldPositionCentre(currentPath[i + waypointNum].coords, gridManager.combatGrid.wholeGrid);
             }
             pathIndicator.SetVertexCount(currentPath.Count - waypointNum + 1);
             pathIndicator.SetPositions(points);
@@ -268,12 +323,16 @@ public class CombatUnit : MonoBehaviour, ITargetable
                 }
                 else
                 {
-                    nextWaypoint = buildingScript.GetWorldPositionCentre(currentPath[waypointNum].coords);
+                    nextWaypoint = gridManager.GetWorldPositionCentre(currentPath[waypointNum].coords, gridManager.combatGrid.wholeGrid);
                 }
             }
             transform.position += (nextWaypoint - transform.position).normalized * 2.5f * Time.deltaTime;
+            transform.LookAt(nextWaypoint);
+            transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.eulerAngles.y, 0));
+
             yield return new WaitForEndOfFrame();
         }
+        animator.SetBool("isWalking", false);
         yield return null;
     }
 
@@ -318,8 +377,11 @@ public class CombatUnit : MonoBehaviour, ITargetable
         if (curHP <= 0 && !dead)
         {
             dead = true;
-            transform.position = transform.position - new Vector3(0, 0.5f, 0);
-            transform.rotation = Quaternion.Euler(90f, 0, 0);
+            //transform.position = transform.position - new Vector3(0, 0.5f, 0);
+            //transform.rotation = Quaternion.Euler(90f, 0, 0);
+            combatController.CheckBattleEnd();
+            animator.SetBool("isDead", true);
+            GetComponent<Collider>().enabled = false;
 
             //combatController.UnitDie(this);
             //Destroy(gameObject);

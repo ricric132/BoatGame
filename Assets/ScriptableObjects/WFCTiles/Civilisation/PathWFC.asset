@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b294cbe5924d0934ca94c2c1ba97f3fa, type: 3}
+  m_Name: PathWFC
+  m_EditorClassIdentifier: 
+  weight: 10
+  upAllowed:
+  - {fileID: 11400000, guid: 4ed3a65c710ed5a44bce396a2cf53f84, type: 2}
+  - {fileID: 11400000, guid: c1c8b4700decbcf488600a37ec131851, type: 2}
+  downAllowed:
+  - {fileID: 11400000, guid: 61f7dd9794a893b489d339cf277c82f1, type: 2}
+  - {fileID: 11400000, guid: 9b19f52d4a6e7ce43a0f5142b976686c, type: 2}
+  - {fileID: 11400000, guid: 67e81a15d211d4449933c8513cc31457, type: 2}
+  - {fileID: 11400000, guid: 14437c0ab53fc9c419c3334c94aa0f52, type: 2}
+  - {fileID: 11400000}
+  leftAllowed:
+  - {fileID: 11400000, guid: 61f7dd9794a893b489d339cf277c82f1, type: 2}
+  - {fileID: 11400000, guid: 9b19f52d4a6e7ce43a0f5142b976686c, type: 2}
+  - {fileID: 11400000, guid: 14437c0ab53fc9c419c3334c94aa0f52, type: 2}
+  - {fileID: 11400000, guid: 67e81a15d211d4449933c8513cc31457, type: 2}
+  - {fileID: 11400000}
+  rightAllowed:
+  - {fileID: 11400000, guid: 9b19f52d4a6e7ce43a0f5142b976686c, type: 2}
+  - {fileID: 11400000, guid: 61f7dd9794a893b489d339cf277c82f1, type: 2}
+  - {fileID: 11400000, guid: 14437c0ab53fc9c419c3334c94aa0f52, type: 2}
+  - {fileID: 11400000, guid: 67e81a15d211d4449933c8513cc31457, type: 2}
+  - {fileID: 11400000}
+  frontAllowed:
+  - {fileID: 11400000, guid: 14437c0ab53fc9c419c3334c94aa0f52, type: 2}
+  - {fileID: 11400000, guid: 67e81a15d211d4449933c8513cc31457, type: 2}
+  - {fileID: 11400000, guid: 9b19f52d4a6e7ce43a0f5142b976686c, type: 2}
+  - {fileID: 11400000, guid: 61f7dd9794a893b489d339cf277c82f1, type: 2}
+  - {fileID: 11400000}
+  backAllowed:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 67e81a15d211d4449933c8513cc31457, type: 2}
+  - {fileID: 11400000, guid: 14437c0ab53fc9c419c3334c94aa0f52, type: 2}
+  - {fileID: 11400000, guid: 9b19f52d4a6e7ce43a0f5142b976686c, type: 2}
+  - {fileID: 11400000, guid: 61f7dd9794a893b489d339cf277c82f1, type: 2}
+  biases:
+    keys:
+    - {fileID: 11400000}
+    - {fileID: 11400000, guid: c1c8b4700decbcf488600a37ec131851, type: 2}
+    values: 2c0100002c010000
+  buildingObject: {fileID: 11400000, guid: 6bbd742b832d45643a714b516750760e, type: 2}

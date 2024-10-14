@@ -8,9 +8,7 @@ public class BuildingSectionScript : MonoBehaviour, ITargetable
     int HP;
     int maxHP;
     public bool willGetHit;
-    public Material baseMaterial;
     public Material hitIndicatorMaterial;
-    public MeshRenderer visual;
     public List<Transform> aimableSpots;
 
     public DirectAimData aimData;
@@ -20,7 +18,12 @@ public class BuildingSectionScript : MonoBehaviour, ITargetable
     public BuildingSectionSO buildingSectionSO;
 
     public List<MeshRenderer> visualSections;
+    Dictionary<MeshRenderer, Material> baseMaterials;
 
+
+    void Start()
+    {
+    }
 
     public DirectAimData GetLocation()
     {
@@ -32,13 +35,14 @@ public class BuildingSectionScript : MonoBehaviour, ITargetable
     {
         foreach(MeshRenderer mesh in visualSections)
         {
-            if(hit)
+            baseMaterials[mesh] = mesh.material;
+            if (hit)
             {
                 mesh.material = hitIndicatorMaterial;
             }
             else
             {
-                mesh.material = baseMaterial;
+                mesh.material = baseMaterials[mesh];
             }
         }
 

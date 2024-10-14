@@ -16,7 +16,7 @@ public class PlayerResources : MonoBehaviour
     void Start()
     {
         foreach(ResourceSO resource in allResourceSos){
-            resources.Add(resource, 1000);
+            resources.Add(resource, 50);
         }
     }
 
